@@ -49,9 +49,9 @@
                 <div id="contenuInfoPrincipalDonnee">
                     <article id="cercleDonneeMeteo">
                         <img src="../assets/soleil.png" alt="" srcset="">
-                        <p id="descriptionMeteo">Ciel dégagé</p>
+                        <p id="descriptionMeteo"></p>
                         <div id="cercleSeparation"></div>
-                        <p id="temperatureCercle"><span id="donneeTemperatureCercle"></span>26°C</p>
+                        <p id="temperatureCercle"><span id="donneeTemperatureCercle"></span>°C</p>
                     </article>
                     <article id="informationsSecondairePrincipalResultat">
                         <article id="tempRessentie">
@@ -81,7 +81,6 @@
                             <div class="textInfoSecondaire">
                                 <h2>Vent - <span id="directionVentText"></span></h2>
                                 <p id="ventValeur"><span id="ventDonnee"></span> km/h</p>
-                                <h2>Rafales <span id="rafaleDonnee"></span> km/h</h2>
                             </div>
                         </article>
                         <article id="visiblite">
@@ -101,11 +100,11 @@
                 <img src="../assets/soleil.png" alt="">
                 <article id="leverSoleil">
                     <h2 >Lever du soleil</h2>
-                    <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
+                    <p><span id="heureLeve"></span> <span id="minuteLeve"></span></p>
                 </article>
                 <article id="coucherSoleil">
                     <h2>Coucher du soleil</h2>
-                    <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
+                    <p><span id="heureCouche"></span> <span id="minuteCouche"></span></p>
                 </article>
             </section>
             <section id="contenuLune">
@@ -154,6 +153,7 @@
 
 
     <!--*SCRIPT-->
+    <script src="getData.js"></script><!--Recuperation via API donnée météo-->
 
 </body>
 
