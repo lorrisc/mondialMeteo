@@ -1,15 +1,11 @@
 let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
-console.log(latitude)
-console.log(longitude)
-
 fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
 
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
-                console.log(data)
                 let villeRecherche = document.querySelectorAll('.ville');
                 let regionRecherche = document.querySelector('#regions');
                 if (data.length == 0) {
@@ -38,7 +34,44 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
-                console.log(data)
+                /**
+                * *DATE ACTUEL
+                */
+                let date = new Date();
+
+                let jour = date.getDate();
+                let mois = date.getMonth() + 1;
+                let heure = date.getHours();
+                let minute = date.getMinutes();
+                let annee = date.getFullYear();
+
+                let jourDate = document.querySelector('#jourDate');
+                if (jour < 10) {
+                    jour = "0" + parseInt(jour);
+                }
+                jourDate.textContent = jour;
+
+
+                let moisDate = document.querySelector('#moisDate');
+                if (mois < 10) {
+                    mois = "0" + parseInt(mois);
+                }
+                moisDate.textContent = mois;
+
+                let aneeDate = document.querySelector('#anneeDate');
+                aneeDate.textContent = annee;
+
+                let heureDate = document.querySelector('#heureDate');
+                if (heure < 10) {
+                    heure = "0" + parseInt(heure);
+                }
+                heureDate.textContent = heure;
+
+                let minDate = document.querySelector('#minuteDate');
+                if (minute < 10) {
+                    minute = "0" + parseInt(minute);
+                }
+                minDate.textContent = minute;
 
                 /**
                  * *CONDITION METEO
@@ -56,7 +89,12 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 humidity.textContent = data.current.humidity;
 
                 let visibility = document.querySelector('#visibiliteDonnee');
-                visibility.textContent = data.current.visibility / 1000;
+                if (((data.current.visibility / 1000).toFixed(0)) == 10) {
+                    visibility.textContent = "> " + (data.current.visibility / 1000).toFixed(1);
+                }
+                else {
+                    visibility.textContent = (data.current.visibility / 1000).toFixed(1);
+                }
 
                 /**
                  * *TEMPERATURE
@@ -177,34 +215,33 @@ fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
-                console.log(data)
 
                 let textPolution = document.querySelector('#donneePolution');
                 let cerclePolution = document.querySelector('#cercleResultatPolution');
-                if (data.list[0].main.aqi == 1){
-                    textPolution.textContent="Bon"
-                    cerclePolution.style.backgroundColor="#03FF0D"
+                if (data.list[0].main.aqi == 1) {
+                    textPolution.textContent = "Bon"
+                    cerclePolution.style.backgroundColor = "#03FF0D"
                 }
-                if (data.list[0].main.aqi == 2){
-                    textPolution.textContent="Équitable"
-                    cerclePolution.style.backgroundColor="#03FF0D"
-                    cerclePolution.style.backgroundColor="rgb(150 255 0)"
+                if (data.list[0].main.aqi == 2) {
+                    textPolution.textContent = "Équitable"
+                    cerclePolution.style.backgroundColor = "#03FF0D"
+                    cerclePolution.style.backgroundColor = "rgb(150 255 0)"
 
                 }
-                if (data.list[0].main.aqi == 3){
-                    textPolution.textContent="Moyen"
-                    cerclePolution.style.backgroundColor="rgb(255 195 0)"
+                if (data.list[0].main.aqi == 3) {
+                    textPolution.textContent = "Moyen"
+                    cerclePolution.style.backgroundColor = "rgb(255 195 0)"
 
                 }
-                if (data.list[0].main.aqi == 4){
-                    textPolution.textContent="Mauvais"
-                    cerclePolution.style.backgroundColor="rgb(255 124 0)"
+                if (data.list[0].main.aqi == 4) {
+                    textPolution.textContent = "Mauvais"
+                    cerclePolution.style.backgroundColor = "rgb(255 124 0)"
 
 
                 }
-                if (data.list[0].main.aqi == 5){
-                    textPolution.textContent="Très mauvais"
-                    cerclePolution.style.backgroundColor="#ff0000"
+                if (data.list[0].main.aqi == 5) {
+                    textPolution.textContent = "Très mauvais"
+                    cerclePolution.style.backgroundColor = "#ff0000"
 
                 }
 

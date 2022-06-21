@@ -172,7 +172,8 @@ h1 {
 }
 
 #humidite img {
-    width: 70%;
+    width: 95%;
+    transform: rotate(180deg);
 }
 
 #tempRessentie img {
@@ -227,8 +228,8 @@ h1 {
 }
 
 #cercleResultatPolution {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height:110px;
     background-color: #03FF0D;
     /*orange: #ffab00, rouge : #ff0000*/
     border-radius: 90%;
