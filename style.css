@@ -59,7 +59,10 @@ h2 {
     margin-bottom: 60px;
     width: 85%;
 }
-
+.warningMessage{
+    color: red;
+    display: none;
+}
 /**BOUTON ACCUEIL*/
 .buttonIndex {
     border: solid;
