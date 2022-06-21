@@ -14,6 +14,32 @@
 header {
     height: 7vh;
     background-color: #3C8EEF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+    height: 100%;
+    width: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    -webkit-transition: background 300ms ease-out;
+    -moz-transition: background 300ms ease-out;
+    -ms-transition: background 300ms ease-out;
+    -o-transition: background 300ms ease-out;
+    transition: background 300ms ease-out;
+}
+
+header a:hover {
+    background-color: #4C7CDA;
 }
 
 /**MAIN -- MAIN -- MAIN*/
@@ -59,10 +85,12 @@ h2 {
     margin-bottom: 60px;
     width: 85%;
 }
-.warningMessage{
+
+.warningMessage {
     color: red;
     display: none;
 }
+
 /**BOUTON ACCUEIL*/
 .buttonIndex {
     border: solid;
@@ -88,9 +116,11 @@ h2 {
     flex-direction: column;
     width: 27%;
 }
-#formulaireCoordonneGeo{
+
+#formulaireCoordonneGeo {
     display: none;
 }
+
 #formulaireCoordonneGeo input {
     height: 35px;
     border-radius: 8px;
@@ -101,10 +131,12 @@ h2 {
     border-color: #4C7CDA;
     border-width: 2px;
 }
-#formulaireCoordonneGeo input:focus { 
+
+#formulaireCoordonneGeo input:focus {
     outline: none !important;
     box-shadow: 0 0 3px #4C7CDA;
- }
+}
+
 #validationForm {
     display: flex;
     justify-content: center;
