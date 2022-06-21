@@ -76,6 +76,8 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let directionVent = document.querySelector('#vent img');
                 directionVent.style.transform = 'rotate(' + data.current.wind_deg + 'deg)';
 
+                getNameDirection(data.current.wind_deg);
+
 
                 /**
                 * *SOLEIL
