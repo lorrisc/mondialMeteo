@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="resultat.css">
 
     <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/facfbfe3cd.js" crossorigin="anonymous"></script>
 
     <!--FAVICON-->
 </head>
@@ -43,18 +44,21 @@
                     <p>6 jours</p>
                 </div>
             </nav>
-            <section id="informationsPrincipalResultatMeteo">
-                <section id="contenuInfoPrincipal">
-                    <h2 class="majuscule">météo instantané - mardi 21 juin 2022 - 11h</h2>
+            <section id="contenuInfoPrincipal">
+                <h2 class="majuscule">météo instantané - mardi 21 juin 2022 - 11h</h2>
+                <div id="contenuInfoPrincipalDonnee">
                     <article id="cercleDonneeMeteo">
-                        <img src="" alt="" srcset="">
-                        <p id="descriptionMeteo"></p>
+                        <img src="../assets/Cartoon-Sun-PNG-Pic.png" alt="" srcset="">
+                        <p id="descriptionMeteo">Ciel dégagé</p>
                         <div id="cercleSeparation"></div>
-                        <p id="temperatureCerce"><span id="donneeTemperatureCercle"></span>°C</p>
+                        <p id="temperatureCercle"><span id="donneeTemperatureCercle"></span>26°C</p>
                     </article>
                     <article id="informationsSecondairePrincipalResultat">
                         <article id="tempRessentie">
-                            <img src="" alt="" srcset="">
+                            <div class="imgInfoSecondaire">
+                                <img src="../assets/thermometre.png" alt="icon thermometre">
+
+                            </div>
                             <div class="textInfoSecondaire">
                                 <h2>Ressenti</h2>
                                 <p id="tempRessentieValeur"><span id="tempRessentieDonnee"></span>°C</p>
@@ -62,14 +66,18 @@
 
                         </article>
                         <article id="humidite">
-                            <img src="" alt="" srcset="">
+                            <div class="imgInfoSecondaire">
+                                <img src="../assets/goutte-de-liquide.png" alt="icon thermometre">
+                            </div>
                             <div class="textInfoSecondaire">
                                 <h2>Humidité</h2>
                                 <p id="humiditeValeur"><span id="humiditeDonnee"></span>%</p>
                             </div>
                         </article>
                         <article id="vent">
-                            <img src="" alt="" srcset="">
+                            <div class="imgInfoSecondaire">
+                                <img src="../assets/directionVent.png" alt="direction vent">
+                            </div>
                             <div class="textInfoSecondaire">
                                 <h2>Vent - <span id="directionVentText"></span></h2>
                                 <p id="ventValeur"><span id="ventDonnee"></span> km/h</p>
@@ -77,58 +85,60 @@
                             </div>
                         </article>
                         <article id="visiblite">
-                            <img src="" alt="" srcset="">
+                            <div class="imgInfoSecondaire">
+                                <img src="../assets/oeil-ouvert.png" alt="icon oeil">
+                            </div>
                             <div class="textInfoSecondaire">
                                 <h2>Visibilité</h2>
                                 <p id="visibiliteValeur"><span id="visibiliteDonnee"></span> km</p>
                             </div>
                         </article>
                     </article>
-                </section>
-                <section id="contenuSoleil">
-                    <h2 class="grosTitre">lever du soleil / coucher du soleil</h2>
+                </div>
+            </section>
+            <section id="contenuSoleil">
+                <h2 class="grosTitre">lever du soleil / coucher du soleil</h2>
+                <img src="../assets/Cartoon-Sun-PNG-Pic.png" alt="">
+                <article id="leverSoleil">
+                    <h2 >Lever du soleil</h2>
+                    <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
+                </article>
+                <article id="coucherSoleil">
+                    <h2>Coucher du soleil</h2>
+                    <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
+                </article>
+            </section>
+            <section id="contenuLune">
+                <h2 class="grosTitre">lever de la lune / coucher de la lune</h2>
+                <img src="../assets/lune.png" alt="">
+                <article id="leverLune">
+                    <h2>Lever de la Lune</h2>
+                    <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
+                </article>
+                <article id="coucherLune">
+                    <h2>Coucher de la lune</h2>
+                    <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
+                </article>
+                <article id="coucherLune">
                     <img src="" alt="">
-                    <article id="leverSoleil">
-                        <h2>Lever du soleil</h2>
-                        <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
-                    </article>
-                    <article id="coucherSoleil">
-                        <h2>Coucher du soleil</h2>
-                        <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
-                    </article>
-                </section>
-                <section id="contenuLune">
-                    <h2 class="grosTitre">lever de la lune / coucher de la lune</h2>
-                    <img src="" alt="">
-                    <article id="leverLune">
-                        <h2>Lever de la Lune</h2>
-                        <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
-                    </article>
-                    <article id="coucherLune">
-                        <h2>Coucher de la lune</h2>
-                        <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
-                    </article>
-                    <article id="coucherLune">
-                        <img src="" alt="">
-                        <h2>Phase de lune</h2>
-                    </article>
-                </section>
-                <section id="contenuPollution">
-                    <h2 class="grosTitre">polution de l'air à <span class="ville"></span></h2>
-                    <div id="cercleResultatPolution">
-                        <p id="donneePolution"></p>
-                    </div>
-                    <div id="valeurDesDonnes">
-                        <p>Concentration de monoxyde de carbone : <span id="valeurCO"></span></p>
-                        <p>Concentration de monoxyde d'azote : <span id="valeurNO"></span></p>
-                        <p>Concentration de dioxyde d'azote : <span id="valeurNO2"></span></p>
-                        <p>Concentration d'ozone : <span id="valeur03"></span></p>
-                        <p>Concentration de dioxyde de soufre : <span id="valeurSO2"></span></p>
-                        <p>Concentration de particule fine : <span id="valeurPM25"></span></p>
-                        <p>Concentration de particule : <span id="valeurPM10"></span></p>
-                        <p>Concentration d'ammoniac : <span id="valeurNH3"></span></p>
-                    </div>
-                </section>
+                    <h2>Phase de lune</h2>
+                </article>
+            </section>
+            <section id="contenuPollution">
+                <h2 class="grosTitre">polution de l'air à <span class="ville"></span></h2>
+                <div id="cercleResultatPolution">
+                    <p id="donneePolution">Bon</p>
+                </div>
+                <div id="valeurDesDonnes">
+                    <p>Concentration de monoxyde de carbone : <span id="valeurCO"></span></p>
+                    <p>Concentration de monoxyde d'azote : <span id="valeurNO"></span></p>
+                    <p>Concentration de dioxyde d'azote : <span id="valeurNO2"></span></p>
+                    <p>Concentration d'ozone : <span id="valeur03"></span></p>
+                    <p>Concentration de dioxyde de soufre : <span id="valeurSO2"></span></p>
+                    <p>Concentration de particule fine : <span id="valeurPM25"></span></p>
+                    <p>Concentration de particule : <span id="valeurPM10"></span></p>
+                    <p>Concentration d'ammoniac : <span id="valeurNH3"></span></p>
+                </div>
             </section>
         </section>
     </main>

@@ -1,0 +1,239 @@
+#conteneurResultat {
+    padding: 0;
+    color: white;
+    text-align: center;
+}
+
+#topMeteoTitre {
+    height: 10vh;
+    width: 100%;
+
+    background-color: #89BFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: left;
+}
+
+#topMeteoTitre h1,
+#topMeteoTitre h2 {
+    margin-left: 30px;
+
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 2em;
+
+}
+
+.majuscule {
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.grosTitre {
+    font-size: 1.3em;
+    text-transform: uppercase;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+/**NAVBAR METEO*/
+#typeDonneMeteo {
+    width: 100%;
+    height: 5.5vh;
+    background-color: #4C7CDA;
+
+    display: flex;
+    align-items: center;
+}
+
+#typeDonneMeteo div {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+#typeDonneMeteo div:hover {
+    background-color: #2c68e0;
+
+}
+
+.rightSeparation {
+    border-right: solid;
+    border-width: 1px;
+}
+
+/**INFORMATIONS PRINCIPALES*/
+#contenuInfoPrincipal {
+    background-color: #89BFFF;
+    width: 100%;
+    margin-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#contenuInfoPrincipalDonnee {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#cercleDonneeMeteo {
+    width: 220px;
+    height: 220px;
+    border-radius: 90%;
+
+    margin: 35px 0;
+
+    background-color: #4C7CDA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#cercleDonneeMeteo img {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 10px;
+}
+
+#temperatureCercle {
+    font-size: 3.1em;
+    font-weight: 700;
+}
+
+#cercleSeparation {
+    width: 60%;
+    height: 1px;
+    background-color: white;
+    margin: 8px 0;
+}
+
+#informationsSecondairePrincipalResultat {
+    width: 48%;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items: center;
+
+    text-align: left;
+
+}
+
+#informationsSecondairePrincipalResultat article {
+    width: 40%;
+    margin: 15px;
+
+    display: flex;
+}
+
+#informationsSecondairePrincipalResultat article p {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 3px 0 0 0;
+}
+
+.imgInfoSecondaire {
+    width: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.imgInfoSecondaire img {
+    width: 80%;
+}
+
+#vent p {
+    margin: 3px 0;
+}
+
+#vent img {
+    width: 50%;
+}
+
+#humidite img {
+    width: 70%;
+}
+
+#tempRessentie img {
+    width: 90%;
+}
+
+
+/**SOLEIL -- LUNE -- POLUTION*/
+#contenuSoleil,#contenuLune,#contenuPollution {
+    background-color: #89BFFF;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: 0 0 40px 0;
+
+}
+
+#contenuSoleil h2, #contenuLune h2, #contenuPollution h2 {
+    width: 100%;
+}
+
+#contenuSoleil img, #contenuLune img {
+    width: 9%;
+}
+
+#contenuSoleil p, #contenuLune p {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 3px 0 0 0;
+}
+#contenuSoleil,#contenuLune{
+    margin: 0 0 25px 0;
+}
+
+
+
+/**POLUTION -- POLUUTION -- POLUTION */
+#contenuPollution{
+    margin-bottom: 200px;
+}
+#cercleResultatPolution{
+    width: 110px;
+    height: 110px;
+    background-color: #03FF0D;
+    /*orange: #ffab00, rouge : #ff0000*/
+    border-radius: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: black;
+    font-size: 1.4em;
+    font-weight: 900;
+}
+#valeurDesDonnes{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#valeurDesDonnes p{
+    width: 48%;
+    font-size: 0.9em;
+    text-align: left;
+}
