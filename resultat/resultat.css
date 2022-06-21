@@ -175,7 +175,9 @@ h1 {
 
 
 /**SOLEIL -- LUNE -- POLUTION*/
-#contenuSoleil,#contenuLune,#contenuPollution {
+#contenuSoleil,
+#contenuLune,
+#contenuPollution {
     background-color: #89BFFF;
     width: 100%;
 
@@ -188,30 +190,37 @@ h1 {
 
 }
 
-#contenuSoleil h2, #contenuLune h2, #contenuPollution h2 {
+#contenuSoleil h2,
+#contenuLune h2,
+#contenuPollution h2 {
     width: 100%;
 }
 
-#contenuSoleil img, #contenuLune img {
+#contenuSoleil img,
+#contenuLune img {
     width: 9%;
 }
 
-#contenuSoleil p, #contenuLune p {
+#contenuSoleil p,
+#contenuLune p {
     font-size: 1.2em;
     font-weight: 700;
     margin: 3px 0 0 0;
 }
-#contenuSoleil,#contenuLune{
+
+#contenuSoleil,
+#contenuLune {
     margin: 0 0 25px 0;
 }
 
 
 
 /**POLUTION -- POLUUTION -- POLUTION */
-#contenuPollution{
+#contenuPollution {
     margin-bottom: 200px;
 }
-#cercleResultatPolution{
+
+#cercleResultatPolution {
     width: 110px;
     height: 110px;
     background-color: #03FF0D;
@@ -226,14 +235,37 @@ h1 {
     font-size: 1.4em;
     font-weight: 900;
 }
-#valeurDesDonnes{
+
+#valeurDesDonnes {
     width: 75%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-#valeurDesDonnes p{
+
+#valeurDesDonnes p {
     width: 48%;
     font-size: 0.9em;
     text-align: left;
+}
+
+
+
+#contain_moon {
+    width: 20%;
+}
+
+#phaseLunaire {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin: 3px 0 03px 0;
+}
+
+#representationLune{
+    width: 20%;
+}
+#contain_moon{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
 }
