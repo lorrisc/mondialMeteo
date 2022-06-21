@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!--CSS-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="resultat.css">
 
     <!--fontawesome-->
 
@@ -27,9 +28,109 @@
 
     <main>
         <section id="conteneurResultat" class="conteneurMain">
-            
-        </section>
+            <section id="topMeteoTitre">
+                <h1>météo <span class="ville"></span></h1>
+                <h2 id="regions">Auvergne-Rhônes-Alpes</h2>
+            </section>
+            <nav id="typeDonneMeteo">
+                <div class="textNavDonneMeteo rightSeparation">
+                    <p>Instantané</p>
+                </div>
+                <div class="textNavDonneMeteo rightSeparation">
+                    <p>6 heures</p>
+                </div>
+                <div class="textNavDonneMeteo">
+                    <p>6 jours</p>
+                </div>
+            </nav>
+            <section id="informationsPrincipalResultatMeteo">
+                <section id="contenuInfoPrincipal">
+                    <h2 class="majuscule">météo instantané - mardi 21 juin 2022 - 11h</h2>
+                    <article id="cercleDonneeMeteo">
+                        <img src="" alt="" srcset="">
+                        <p id="descriptionMeteo"></p>
+                        <div id="cercleSeparation"></div>
+                        <p id="temperatureCerce"><span id="donneeTemperatureCercle"></span>°C</p>
+                    </article>
+                    <article id="informationsSecondairePrincipalResultat">
+                        <article id="tempRessentie">
+                            <img src="" alt="" srcset="">
+                            <div class="textInfoSecondaire">
+                                <h2>Ressenti</h2>
+                                <p id="tempRessentieValeur"><span id="tempRessentieDonnee"></span>°C</p>
+                            </div>
 
+                        </article>
+                        <article id="humidite">
+                            <img src="" alt="" srcset="">
+                            <div class="textInfoSecondaire">
+                                <h2>Humidité</h2>
+                                <p id="humiditeValeur"><span id="humiditeDonnee"></span>%</p>
+                            </div>
+                        </article>
+                        <article id="vent">
+                            <img src="" alt="" srcset="">
+                            <div class="textInfoSecondaire">
+                                <h2>Vent - <span id="directionVentText"></span></h2>
+                                <p id="ventValeur"><span id="ventDonnee"></span> km/h</p>
+                                <h2>Rafales <span id="rafaleDonnee"></span> km/h</h2>
+                            </div>
+                        </article>
+                        <article id="visiblite">
+                            <img src="" alt="" srcset="">
+                            <div class="textInfoSecondaire">
+                                <h2>Visibilité</h2>
+                                <p id="visibiliteValeur"><span id="visibiliteDonnee"></span> km</p>
+                            </div>
+                        </article>
+                    </article>
+                </section>
+                <section id="contenuSoleil">
+                    <h2 class="grosTitre">lever du soleil / coucher du soleil</h2>
+                    <img src="" alt="">
+                    <article id="leverSoleil">
+                        <h2>Lever du soleil</h2>
+                        <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
+                    </article>
+                    <article id="coucherSoleil">
+                        <h2>Coucher du soleil</h2>
+                        <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
+                    </article>
+                </section>
+                <section id="contenuLune">
+                    <h2 class="grosTitre">lever de la lune / coucher de la lune</h2>
+                    <img src="" alt="">
+                    <article id="leverLune">
+                        <h2>Lever de la Lune</h2>
+                        <p><span id="heureLeve"></span>:<span id="minuteLeve"></span></p>
+                    </article>
+                    <article id="coucherLune">
+                        <h2>Coucher de la lune</h2>
+                        <p><span id="heureCouche"></span>:<span id="minuteCouche"></span></p>
+                    </article>
+                    <article id="coucherLune">
+                        <img src="" alt="">
+                        <h2>Phase de lune</h2>
+                    </article>
+                </section>
+                <section id="contenuPollution">
+                    <h2 class="grosTitre">polution de l'air à <span class="ville"></span></h2>
+                    <div id="cercleResultatPolution">
+                        <p id="donneePolution"></p>
+                    </div>
+                    <div id="valeurDesDonnes">
+                        <p>Concentration de monoxyde de carbone : <span id="valeurCO"></span></p>
+                        <p>Concentration de monoxyde d'azote : <span id="valeurNO"></span></p>
+                        <p>Concentration de dioxyde d'azote : <span id="valeurNO2"></span></p>
+                        <p>Concentration d'ozone : <span id="valeur03"></span></p>
+                        <p>Concentration de dioxyde de soufre : <span id="valeurSO2"></span></p>
+                        <p>Concentration de particule fine : <span id="valeurPM25"></span></p>
+                        <p>Concentration de particule : <span id="valeurPM10"></span></p>
+                        <p>Concentration d'ammoniac : <span id="valeurNH3"></span></p>
+                    </div>
+                </section>
+            </section>
+        </section>
     </main>
 
 
@@ -43,10 +144,6 @@
 
 
     <!--*SCRIPT-->
-    <!--geolocalisation utilisateur-->
-    <script src="geolocalisation.js"></script>
-    <!--gestion formulaire coordonnées géographiques-->
-    <script src="coordGeo.js"></script>
 
 </body>
 
