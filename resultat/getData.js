@@ -10,14 +10,19 @@ fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' 
         if (res.ok) {
             res.json().then(data => {
                 console.log(data)
-                let villeRecherche = document.querySelector('.ville');
+                let villeRecherche = document.querySelectorAll('.ville');
                 let regionRecherche = document.querySelector('#regions');
                 if (data.length == 0) {
-                    villeRecherche.textContent = ": lat"+latitude+", longitude"+longitude;
+                    for (i = 0; i < villeRecherche.length; i++) {
+                        villeRecherche[i].textContent = ": lat" + latitude + ", longitude" + longitude;
+                    }
+
                 }
                 else {
                     let villeUser = data[0].name
-                    villeRecherche.textContent = villeUser;
+                    for (i = 0; i < villeRecherche.length; i++) {
+                        villeRecherche[i].textContent = villeUser;
+                    }
 
                     let regionUser = data[0].state
                     regionRecherche.textContent = regionUser;
@@ -28,7 +33,7 @@ fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' 
             console.log("Coordonnées incorrecte");
         }
     })
-    
+
 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d&units=metric&lang=fr')
     .then(res => {
         if (res.ok) {
@@ -41,9 +46,8 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let conditionMeteo = document.querySelector('#descriptionMeteo');
                 conditionMeteo.textContent = data.current.weather[0].description;
 
-                // let imgCondition = document.querySelector('#conditionImg')
-                // imgCondition.src = 'https://openweathermap.org/img/wn/10d@2x.png';
-                // imgCondition.src = 'https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png';
+                let imgCondition = document.querySelector('#cercleDonneeMeteo img')
+                imgCondition.src = '../assets/iconMeteo/' + data.current.weather[0].icon + '.png';
 
                 /**
                  * *INFORMATION SECONDAIRE
@@ -157,6 +161,69 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 coucherLuneMinute.textContent = minCoucherLune;
 
 
+
+            })
+        } else {
+            console.log("Coordonnées incorrecte");
+        }
+    })
+
+
+
+fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
+
+    .then(res => {
+        if (res.ok) {
+            res.json().then(data => {
+                console.log(data)
+
+                let textPolution = document.querySelector('#donneePolution');
+                let cerclePolution = document.querySelector('#cercleResultatPolution');
+                if (data.list[0].main.aqi == 1){
+                    textPolution.textContent="Bon"
+                    cerclePolution.style.backgroundColor="#03FF0D"
+                }
+                if (data.list[0].main.aqi == 2){
+                    textPolution.textContent="Équitable"
+                    cerclePolution.style.backgroundColor="#03FF0D"
+                    cerclePolution.style.backgroundColor="rgb(150 255 0)"
+
+                }
+                if (data.list[0].main.aqi == 3){
+                    textPolution.textContent="Moyen"
+                    cerclePolution.style.backgroundColor="rgb(255 195 0)"
+
+                }
+                if (data.list[0].main.aqi == 4){
+                    textPolution.textContent="Mauvais"
+                    cerclePolution.style.backgroundColor="rgb(255 124 0)"
+
+
+                }
+                if (data.list[0].main.aqi == 5){
+                    textPolution.textContent="Très mauvais"
+                    cerclePolution.style.backgroundColor="#ff0000"
+
+                }
+
+                let co = document.querySelector('#valeurCO');
+                let nh3 = document.querySelector('#valeurNH3');
+                let no = document.querySelector('#valeurNO');
+                let no2 = document.querySelector('#valeurNO2');
+                let o3 = document.querySelector('#valeur03');
+                let pm25 = document.querySelector('#valeurPM25');
+                let pm10 = document.querySelector('#valeurPM10');
+                let so2 = document.querySelector('#valeurSO2');
+
+
+                co.textContent = data.list[0].components.co;
+                nh3.textContent = data.list[0].components.nh3;
+                no.textContent = data.list[0].components.no;
+                no2.textContent = data.list[0].components.no2;
+                o3.textContent = data.list[0].components.o3;
+                pm25.textContent = data.list[0].components.pm2_5;
+                pm10.textContent = data.list[0].components.pm10;
+                so2.textContent = data.list[0].components.so2;
 
             })
         } else {

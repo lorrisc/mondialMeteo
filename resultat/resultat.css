@@ -121,7 +121,7 @@ h1 {
 }
 
 #informationsSecondairePrincipalResultat {
-    width: 48%;
+    width: 49%;
     display: flex;
     flex-wrap: wrap;
 
@@ -237,7 +237,7 @@ h1 {
 }
 
 #valeurDesDonnes {
-    width: 75%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
