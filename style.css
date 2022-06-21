@@ -101,12 +101,24 @@ h2 {
     padding: 16px 32px;
 
     cursor: pointer;
+
+    -webkit-transition: background 300ms ease-out;
+    -moz-transition: background 300ms ease-out;
+    -ms-transition: background 300ms ease-out;
+    -o-transition: background 300ms ease-out;
+    transition: background 300ms ease-out;
 }
 
 #geolocalisationButton {
     background-color: #4C7CDA;
     color: white;
     text-decoration: none;
+}
+#geolocalisationButton:hover {
+    background-color: #2c68e0;
+}
+.buttonIndex:hover{
+    border-color: #2c68e0;
 }
 
 /**FORMULAIRE COORDONNÉES*/
