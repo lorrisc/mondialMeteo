@@ -31,7 +31,7 @@
         <section id="conteneurResultat" class="conteneurMain">
             <section id="topMeteoTitre">
                 <h1>météo <span class="ville"></span></h1>
-                <h2 id="regions">Auvergne-Rhônes-Alpes</h2>
+                <h2 id="regions"></h2>
             </section>
             <nav id="typeDonneMeteo">
                 <div class="textNavDonneMeteo rightSeparation">
@@ -48,7 +48,7 @@
                 <h2 class="majuscule">météo instantané - mardi 21 juin 2022 - 11h</h2>
                 <div id="contenuInfoPrincipalDonnee">
                     <article id="cercleDonneeMeteo">
-                        <img src="../assets/soleil.png" alt="" srcset="">
+                        <img src="../assets/fog.png" alt="Icon meteo instantané">
                         <p id="descriptionMeteo"></p>
                         <div id="cercleSeparation"></div>
                         <p id="temperatureCercle"><span id="donneeTemperatureCercle"></span>°C</p>
@@ -56,7 +56,7 @@
                     <article id="informationsSecondairePrincipalResultat">
                         <article id="tempRessentie">
                             <div class="imgInfoSecondaire">
-                                <img src="../assets/thermometre.png" alt="icon thermometre">
+                                <img src="../assets/infoSecondaire/thermometre.png" alt="icon thermometre">
 
                             </div>
                             <div class="textInfoSecondaire">
@@ -67,7 +67,7 @@
                         </article>
                         <article id="humidite">
                             <div class="imgInfoSecondaire">
-                                <img src="../assets/goutte.png" alt="icon thermometre">
+                                <img src="../assets/infoSecondaire/goutte.png" alt="icon thermometre">
                             </div>
                             <div class="textInfoSecondaire">
                                 <h2>Humidité</h2>
@@ -76,7 +76,7 @@
                         </article>
                         <article id="vent">
                             <div class="imgInfoSecondaire">
-                                <img src="../assets/directionVent.png" alt="direction vent">
+                                <img src="../assets/infoSecondaire/directionVent.png" alt="direction vent">
                             </div>
                             <div class="textInfoSecondaire">
                                 <h2>Vent - <span id="directionVentText"></span></h2>
@@ -85,7 +85,7 @@
                         </article>
                         <article id="visiblite">
                             <div class="imgInfoSecondaire">
-                                <img src="../assets/oeil.png" alt="icon oeil">
+                                <img src="../assets/infoSecondaire/oeil.png" alt="icon oeil">
                             </div>
                             <div class="textInfoSecondaire">
                                 <h2>Visibilité</h2>
@@ -97,7 +97,7 @@
             </section>
             <section id="contenuSoleil">
                 <h2 class="grosTitre">lever du soleil / coucher du soleil</h2>
-                <img src="../assets/soleil.png" alt="">
+                <img src="../assets/sunrise.png" alt="">
                 <article id="leverSoleil">
                     <h2>Lever du soleil</h2>
                     <p><span id="heureLeve"></span> <span id="minuteLeve"></span></p>
@@ -129,6 +129,7 @@
 
                 </div>
                 <script>(function () { var d = new Date().getDate(); var m = document.querySelectorAll("#contain_moon div"); var a = new XMLHttpRequest(); var url = "https://www.icalendar37.net/lunar/api/?lang=fr&month=" + (new Date().getMonth() + 1) + "&year=" + (new Date().getFullYear()) + "&size=&lightColor=rgb(255,255,255)&shadeColor=rgb(17,17,17)&t&LDZ=" + new Date(new Date().getFullYear(), new Date().getMonth(), 1) / 1000 + ""; a.onreadystatechange = function () { if (a.readyState == 4 && a.status == 200) { var b = JSON.parse(a.responseText); m[1].innerHTML = b.phase[d].svg; if (typeof moon_widget_loaded == "function") moon_widget_loaded(b); m[2].innerHTML = b.phase[d].npWidget; m[3].innerHTML = "Prochaine pleine lune<br>" + b.nextFullMoon } }; a.open("GET", url, true); a.send() })()</script>
+           
             </section>
             <section id="contenuPollution">
                 <h2 class="grosTitre">polution de l'air à <span class="ville"></span></h2>

@@ -263,9 +263,10 @@ h1 {
 
 #representationLune{
     width: 20%;
+    margin-right: 10px;
 }
 #contain_moon{
     display: flex;
     width: 30%;
-    justify-content: space-between;
+    justify-content: center;
 }

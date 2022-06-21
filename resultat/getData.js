@@ -4,6 +4,31 @@ let longitude = sessionStorage.getItem('longitudeUser');
 console.log(latitude)
 console.log(longitude)
 
+fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
+
+    .then(res => {
+        if (res.ok) {
+            res.json().then(data => {
+                console.log(data)
+                let villeRecherche = document.querySelector('.ville');
+                let regionRecherche = document.querySelector('#regions');
+                if (data.length == 0) {
+                    villeRecherche.textContent = ": lat"+latitude+", longitude"+longitude;
+                }
+                else {
+                    let villeUser = data[0].name
+                    villeRecherche.textContent = villeUser;
+
+                    let regionUser = data[0].state
+                    regionRecherche.textContent = regionUser;
+
+                }
+            })
+        } else {
+            console.log("Coordonnées incorrecte");
+        }
+    })
+    
 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d&units=metric&lang=fr')
     .then(res => {
         if (res.ok) {
@@ -16,9 +41,9 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let conditionMeteo = document.querySelector('#descriptionMeteo');
                 conditionMeteo.textContent = data.current.weather[0].description;
 
-                // let imgCondition = document.querySelector('#conditionImg')
-                // imgCondition.src = 'https://openweathermap.org/img/wn/10d@2x.png';
-                // imgCondition.src = 'https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png';
+                let imgCondition = document.querySelector('#conditionImg')
+                imgCondition.src = 'https://openweathermap.org/img/wn/10d@2x.png';
+                imgCondition.src = 'https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png';
 
                 /**
                  * *INFORMATION SECONDAIRE
