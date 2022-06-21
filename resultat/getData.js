@@ -90,6 +90,48 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 coucherSoleilMinute.textContent = minCoucher;
 
 
+                /**
+                * *LUNE
+                */
+                //*LEVER DE LA LUNE
+                const unixTimestampLeverLune = data.daily[0].moonrise;
+
+                const millisecondsLeverLune = unixTimestampLeverLune * 1000 // 1575909015000
+
+                const dateObjectLeverLune = new Date(millisecondsLeverLune)
+                const humanDateFormatLeverLune = dateObjectLeverLune.toLocaleString()
+
+                let heureLeverLune = null
+                let minLeverLune = null
+                heureLeverLune = dateObjectLeverLune.toLocaleString("FR", { hour: "numeric" }) // 10 AM
+                minLeverLune = dateObjectLeverLune.toLocaleString("FR", { minute: "numeric" }) // 30
+
+                let leverLuneHeure = document.querySelector('#heureLeveLune');
+                leverLuneHeure.textContent = heureLeverLune;
+
+                let leverLunelMinute = document.querySelector('#minuteLeveLune');
+                leverLunelMinute.textContent = minLeverLune;
+
+                //*COUCHER DU SOLEIL
+                const unixTimestampCoucherLune = data.daily[0].moonset;
+
+                const millisecondsCoucherLune = unixTimestampCoucherLune * 1000 // 1575909015000
+
+                const dateObjectCoucherLune = new Date(millisecondsCoucherLune)
+                const humanDateFormatCoucherLune = dateObjectCoucherLune.toLocaleString()
+
+                let heureCoucherLune = null
+                let minCoucherLune = null
+                heureCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { hour: "numeric" }) // 10 AM
+                minCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { minute: "numeric" }) // 30
+
+                let coucherLuneHeure = document.querySelector('#heureCoucheLune');
+                coucherLuneHeure.textContent = heureCoucherLune;
+
+                let coucherLuneMinute = document.querySelector('#minuteCoucheLune');
+                coucherLuneMinute.textContent = minCoucherLune;
+
+
 
             })
         } else {
