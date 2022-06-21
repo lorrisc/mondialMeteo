@@ -41,9 +41,9 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let conditionMeteo = document.querySelector('#descriptionMeteo');
                 conditionMeteo.textContent = data.current.weather[0].description;
 
-                let imgCondition = document.querySelector('#conditionImg')
-                imgCondition.src = 'https://openweathermap.org/img/wn/10d@2x.png';
-                imgCondition.src = 'https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png';
+                // let imgCondition = document.querySelector('#conditionImg')
+                // imgCondition.src = 'https://openweathermap.org/img/wn/10d@2x.png';
+                // imgCondition.src = 'https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '@2x.png';
 
                 /**
                  * *INFORMATION SECONDAIRE
