@@ -203,6 +203,66 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
 
+
+                //*JOUR -- JOUR -- JOUR -- JOUR
+                //*TOP NAVBAR JOUR
+                for (i = 1; i <= 7; i++) {
+                    
+
+                    let infoDayPrincipal = document.createElement('Article');
+                    infoDayPrincipal.className = "dayInfo";
+
+                    let sectionJour = document.getElementById("contenuInfoJours");
+                    sectionJour.appendChild(infoDayPrincipal);
+
+
+                    let titreDay = document.createElement('h2');
+                    titreDay.textContent=(jour+i)+"/"+mois;
+                    
+                    infoDayPrincipal.appendChild(titreDay);
+
+                    let iconMeteo = document.createElement('img');
+                    iconMeteo.className = "iconMeteoJour";
+                    iconMeteo.src='../assets/iconMeteo/' + data.daily[i].weather[0].icon + '.png';
+                    infoDayPrincipal.appendChild(iconMeteo);
+
+                    let tempDay = document.createElement('p');
+                    tempDay.className="tempDay"
+                    tempDay.textContent=Math.round(data.daily[i].temp.day)+"°C"
+                    infoDayPrincipal.appendChild(tempDay);
+
+                    let tempDayMin = document.createElement('p');
+                    tempDayMin.className="tempDayMin blue"
+                    tempDayMin.textContent=data.daily[i].temp.min+"°C"
+                    infoDayPrincipal.appendChild(tempDayMin);
+
+                    let tempDayMax = document.createElement('p');
+                    tempDayMax.className="tempDayMax red"
+                    tempDayMax.textContent=data.daily[i].temp.max+"°C"
+                    infoDayPrincipal.appendChild(tempDayMax);
+
+                    let ventDay = document.createElement('div');
+                    ventDay.className="ventPrincipalJour"
+                    infoDayPrincipal.appendChild(ventDay);
+
+                    let directionVentDay = document.createElement('img');
+                    directionVentDay.src='../assets/infoSecondaire/directionVent.png';
+                    directionVentDay.style.transform = 'rotate(' + data.daily[i].wind_deg + 'deg)';
+                    ventDay.appendChild(directionVentDay);
+
+
+                    let ventDayValue = document.createElement('p')
+                    ventDayValue.textContent = Math.round(data.daily[i].wind_speed * 3.6)+"km/h";
+                    ventDay.appendChild(ventDayValue);
+
+                    let iconSousInfo = document.createElement('i')
+                    iconSousInfo.className="fa-solid fa-caret-down fa-xl"
+                    infoDayPrincipal.appendChild(iconSousInfo);
+
+
+                }
+
+
             })
         } else {
             console.log("Coordonnées incorrecte");
