@@ -391,7 +391,7 @@ h1 {
 
 /**Informations bis meteo jour */
 .dayInfoBis, .heureInfoBis {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 

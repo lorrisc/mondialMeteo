@@ -117,7 +117,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                 let textDirection = document.querySelector('#directionVentText');
                 let directionResultat = getNameDirection(data.current.wind_deg);
-                textDirection.textContent=directionResultat;
+                textDirection.textContent = directionResultat;
 
 
                 /**
@@ -211,11 +211,15 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
                     //*TOP NAVBAR JOUR
+                    let conteneurMeteoJour = document.createElement('div');
+                    let sectionJour = document.getElementById("contenuInfoJours");
+                    sectionJour.appendChild(conteneurMeteoJour);
+
+
                     let infoDayPrincipal = document.createElement('Article');
                     infoDayPrincipal.className = "dayInfo";
+                    conteneurMeteoJour.appendChild(infoDayPrincipal);
 
-                    let sectionJour = document.getElementById("contenuInfoJours");
-                    sectionJour.appendChild(infoDayPrincipal);
 
 
                     let titreDay = document.createElement('h2');
@@ -258,15 +262,15 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     ventDay.appendChild(ventDayValue);
 
                     let iconSousInfo = document.createElement('i')
-                    iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
-                    iconSousInfo.setAttribute('id', i + "buttonSousMenu");
+                    iconSousInfo.className = "fa-solid fa-caret-down fa-xl buttonSousMenuJour"
+                    // iconSousInfo.setAttribute('id', i + "buttonSousMenuJour");
                     infoDayPrincipal.appendChild(iconSousInfo);
 
                     //*INFO DEROULANT
                     let infoDayDeroulant = document.createElement('Article');
                     infoDayDeroulant.className = "dayInfoBis";
+                    conteneurMeteoJour.appendChild(infoDayDeroulant);
 
-                    sectionJour.appendChild(infoDayDeroulant);
 
                     //*Description
                     let descriptifJour = document.createElement('section');
@@ -332,7 +336,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     directionResultat = getNameDirection(data.daily[i].wind_deg);
 
                     let textVentJ = document.createElement('p');
-                    textVentJ.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h - "+directionResultat;
+                    textVentJ.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h - " + directionResultat;
                     ventJour.appendChild(textVentJ);
 
                     //*vent rafale
@@ -428,11 +432,15 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
                     //*TOP NAVBAR JOUR
+                    let conteneurMeteoHeure = document.createElement('div');
+                    let sectionHeure = document.getElementById("contenuInfoHeures");
+                    sectionHeure.appendChild(conteneurMeteoHeure);
+
+
                     let infoHeurePrincipal = document.createElement('Article');
                     infoHeurePrincipal.className = "heureInfo";
+                    conteneurMeteoHeure.appendChild(infoHeurePrincipal);
 
-                    let sectionHeure = document.getElementById("contenuInfoHeures");
-                    sectionHeure.appendChild(infoHeurePrincipal);
 
                     let titreHeure = document.createElement('h2');
                     if (heure + i == 24 || j > 0) {
@@ -476,15 +484,15 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     ventHeure.appendChild(ventHeureValue);
 
                     let iconSousInfo = document.createElement('i')
-                    iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
-                    iconSousInfo.setAttribute('id', i + "buttonSousMenu");
+                    iconSousInfo.className = "fa-solid fa-caret-down fa-xl buttonSousMenuHeure"
+                    // iconSousInfo.setAttribute('id', /*i + */"buttonSousMenuHeure");
                     infoHeurePrincipal.appendChild(iconSousInfo);
 
                     //*INFO DEROULANT
                     let infoHeureDeroulant = document.createElement('Article');
                     infoHeureDeroulant.className = "heureInfoBis";
 
-                    sectionHeure.appendChild(infoHeureDeroulant);
+                    conteneurMeteoHeure.appendChild(infoHeureDeroulant);
 
                     //*Description
                     let descriptifHeure = document.createElement('section');
@@ -538,7 +546,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     directionResultat = getNameDirection(data.hourly[i].wind_deg);
 
                     let textVentHSous = document.createElement('p');
-                    textVentHSous.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h - "+directionResultat;
+                    textVentHSous.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h - " + directionResultat;
                     ventHeureSous.appendChild(textVentHSous);
 
                     //*vent rafale
@@ -566,8 +574,74 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     let textHumiditeH = document.createElement('p');
                     textHumiditeH.textContent = data.hourly[i].humidity + "%";
                     humiditeHeure.appendChild(textHumiditeH);
-                }
 
+
+
+
+                }
+                // let childNode = document.querySelector('#villeFavoriButton');
+                // // childNode = childNode.lastChild;
+                // childNode = childNode.parentNode;
+                // console.log(childNode)
+
+
+                let iconForOpenJour = document.querySelectorAll('.buttonSousMenuJour');//resultat instantannée
+                for (let i = 0; i < iconForOpenJour.length; i++) {
+                    let statusInfo = 0
+                    iconForOpenJour[i].addEventListener("click", () => {
+                        let parentElement = null
+                        parentElement = iconForOpenJour[i].parentNode;
+                        let parentParentElement = null
+                        parentParentElement = parentElement.parentNode;
+
+                        let lastChildElement = null
+                        lastChildElement = parentParentElement.lastChild
+
+                        console.log(lastChildElement)
+                        if (statusInfo == 0) {
+                            console.log("ouverture")
+                            lastChildElement.style.display = "flex"
+
+                            statusInfo = 1
+                        }
+                        else {
+
+                            console.log("fermeture")
+
+                            lastChildElement.style.display = "none";
+                            statusInfo = 0;
+                        }
+                    });
+                }
+                let iconForOpenHeure = document.querySelectorAll('.buttonSousMenuHeure');//resultat instantannée
+                for (let i = 0; i < iconForOpenHeure.length; i++) {
+                    let statusInfo = 0
+                    iconForOpenHeure[i].addEventListener("click", () => {
+                        let parentElement = null
+                        parentElement = iconForOpenHeure[i].parentNode;
+                        let parentParentElement = null
+                        parentParentElement = parentElement.parentNode;
+
+                        let lastChildElement = null
+                        lastChildElement = parentParentElement.lastChild
+
+                        console.log(lastChildElement)
+
+                        if (statusInfo == 0) {
+                            console.log("ouverture")
+                            lastChildElement.style.display = "flex"
+
+                            statusInfo = 1
+                        }
+                        else {
+
+                            console.log("fermeture")
+
+                            lastChildElement.style.display = "none";
+                            statusInfo = 0;
+                        }
+                    });
+                }
 
             })
         } else {
