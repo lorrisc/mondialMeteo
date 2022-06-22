@@ -45,7 +45,8 @@
                 </div>
             </nav>
             <section id="contenuInfoPrincipal">
-                <h2 class="majuscule">météo instantané - <span id="jourDate"></span>/<span id="moisDate"></span>/<span id="anneeDate"></span> - <span id="heureDate"></span> : <span id="minuteDate"></span></h2>
+                <h2 class="majuscule">météo instantané - <span id="jourDate"></span>/<span id="moisDate"></span>/<span
+                        id="anneeDate"></span> - <span id="heureDate"></span> : <span id="minuteDate"></span></h2>
                 <div id="contenuInfoPrincipalDonnee">
                     <article id="cercleDonneeMeteo">
                         <img src="" alt="Icon meteo instantané">
@@ -118,17 +119,6 @@
                     <h2>Coucher de la lune</h2>
                     <p><span id="heureCoucheLune"></span> <span id="minuteCoucheLune"></span></p>
                 </article>
-                <!-- © wdisseny -->
-                <div id="contain_moon">
-                    <div></div>
-                    <div id="representationLune"></div>
-                    <article>
-                        <div id="phaseLunaire">.</div>
-                        <div>.</div>
-                    </article>
-
-                </div>
-                <script>(function () { var d = new Date().getDate(); var m = document.querySelectorAll("#contain_moon div"); var a = new XMLHttpRequest(); var url = "https://www.icalendar37.net/lunar/api/?lang=fr&month=" + (new Date().getMonth() + 1) + "&year=" + (new Date().getFullYear()) + "&size=&lightColor=rgb(255,255,255)&shadeColor=rgb(17,17,17)&t&LDZ=" + new Date(new Date().getFullYear(), new Date().getMonth(), 1) / 1000 + ""; a.onreadystatechange = function () { if (a.readyState == 4 && a.status == 200) { var b = JSON.parse(a.responseText); m[1].innerHTML = b.phase[d].svg; if (typeof moon_widget_loaded == "function") moon_widget_loaded(b); m[2].innerHTML = b.phase[d].npWidget; m[3].innerHTML = "Prochaine pleine lune<br>" + b.nextFullMoon } }; a.open("GET", url, true); a.send() })()</script>
 
             </section>
             <section id="contenuPollution">
@@ -145,7 +135,9 @@
                     <p>Particule fine (&#x3C; 2,5 µm) : <span id="valeurPM25"></span></p>
                     <p>Particule &#x3C; 10 µm : <span id="valeurPM10"></span></p>
                     <p>Ammoniac : <span id="valeurNH3"></span></p>
-                    <p id="informationComplementaire">Np: les valeurs ci-dessus représente la concentration actuel des gazs poluants. L'indice de polution est calculé en fonction du dioxyde d'azote, des particule PM10 ainsi que de l'ozone.</p>
+                    <p id="informationComplementaire">Np: les valeurs ci-dessus représente la concentration actuelle des
+                        gaz polluants. L'indice de pollution est calculé en fonction du dioxyde d'azote, des particules
+                        PM10 ainsi que de l'ozone.</p>
                 </div>
             </section>
         </section>

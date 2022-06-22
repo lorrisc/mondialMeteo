@@ -252,31 +252,14 @@ h1 {
 
 #valeurDesDonnes p {
     width: 48%;
-    font-size: 0.9em;
+    font-size: 1em;
     text-align: left;
 }
-
-
-
-#contain_moon {
-    width: 20%;
+#valeurDesDonnes #informationComplementaire{
+    font-size: 0.8em;
+    font-style: italic;
 }
 
-#phaseLunaire {
-    font-weight: 700;
-    font-size: 1.2em;
-    margin: 3px 0 03px 0;
-}
-
-#representationLune{
-    width: 20%;
-    margin-right: 10px;
-}
-#contain_moon{
-    display: flex;
-    width: 30%;
-    justify-content: center;
-}
 
 
 #valeurDesDonnes #informationComplementaire{
