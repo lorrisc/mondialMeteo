@@ -9,6 +9,14 @@
     width: 100%;
 
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    text-align: left;
+}
+
+#textTopMeteo {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 
@@ -27,6 +35,33 @@ h1 {
 
 }
 
+#villeFavoriButton {
+    width: 55px;
+    height: 55px;
+    background: #115592;
+    margin: 0 20px;
+    padding: 5px;
+    border-radius: 8px;
+
+    font-size: 0.9em;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    cursor: pointer;
+}
+
+#villeFavoriButton:hover {
+    color: #ffcf00;
+}
+
+#villeFavoriButton img {
+    width: 20px;
+}
+
 .majuscule {
     text-transform: uppercase;
     margin-top: 15px;
@@ -38,7 +73,12 @@ h1 {
     margin: 20px 0;
     font-weight: 700;
 }
-#contenuInfoPrincipal, #contenuPollution,#contenuLune,#contenuSoleil,#topMeteoTitre{
+
+#contenuInfoPrincipal,
+#contenuPollution,
+#contenuLune,
+#contenuSoleil,
+#topMeteoTitre {
     background: linear-gradient(180deg, #2476bb, #38a2f0);
 }
 
@@ -69,7 +109,8 @@ h1 {
     transition: background 300ms ease-out;
 }
 
-#typeDonneMeteo div:hover, .isOpen {
+#typeDonneMeteo div:hover,
+.isOpen {
     background-color: #115592;
 
 }
@@ -78,6 +119,7 @@ h1 {
     border-right: solid;
     border-width: 1px;
 }
+
 /**INFORMATIONS PRINCIPALES*/
 #contenuInfoPrincipal {
     width: 100%;
@@ -272,3 +314,89 @@ h1 {
 
 
 
+#contenuInfoJours {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.dayInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2577BB;
+    height: 95px;
+    font-size: 1.1em;
+    padding: 0 15px;
+}
+
+.contenuPrincipalJour .iconMeteoJour {
+    width: 35px;
+}
+
+.dayInfo h2 {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.dayInfo img {
+    width: 25px;
+    margin-right: 5px;
+}
+
+.blue {
+    color: #75D6FF;
+}
+
+.red {
+    color: #F5C47A;
+}
+
+.ventPrincipalJour {
+    display: flex;
+}
+
+.ventPrincipalJour img {
+    width: 15px;
+}
+
+.rafaleVentJour {
+    font-size: 0.9em;
+    font-weight: 300;
+}
+
+.humiditeJour {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/**Informations bis meteo jour */
+.dayInfoBis {
+    display: flex;
+    flex-direction: column;
+}
+.dayInfoBis section{
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+    height: 60px;
+}
+.dayInfoBis section h2{
+    width: 50%;
+    text-align: left;
+    font-weight: 400;
+    color:#75d6ff;
+}
+.dayInfoBis section p{
+    font-weight: 600;
+}
+
+.dayInfoBisClair{
+    background-color: #135EA4;
+}
+.dayInfoBisFonce{
+    background-color: #115592;
+}

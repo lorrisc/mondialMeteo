@@ -30,8 +30,14 @@
     <main>
         <section id="conteneurResultat" class="conteneurMain">
             <section id="topMeteoTitre">
-                <h1>météo <span class="ville"></span></h1>
-                <h2 id="regions"></h2>
+                <div id="textTopMeteo">
+                    <h1>météo <span class="ville"></span></h1>
+                    <h2 id="regions"></h2>
+                </div>
+                <div id="villeFavoriButton">
+                    <img src="../assets/starBorderEpais.png " alt="icon etoile favori">
+                    <p>Favoris</p>
+                </div>
             </section>
             <nav id="typeDonneMeteo">
                 <div class="textNavDonneMeteo rightSeparation isOpen">
@@ -140,7 +146,78 @@
                         PM10 ainsi que de l'ozone.</p>
                 </div>
             </section>
+
+
+
+            <section id="contenuInfoJours">
+                <article class="dayInfo">
+                    <h2>MER. 22</h2>
+                    <img class="iconMeteoJour" src="../assets/iconMeteo/01n.png" alt="icon meteo">
+                    <p>15°C</p>
+                    <p class="blue">12°C min</p>
+                    <p class="red">21°C max</p>
+                    <div class="ventPrincipalJour">
+                        <img src="../assets/infoSecondaire/directionVent.png" alt="direction du vent">
+                        <p>14 km/h</p>
+                    </div>
+                    <i class="fa-solid fa-caret-down fa-xl"></i>
+                    <!-- <div class="rafaleVent">
+                            <p>33 km/h</p>
+                            <p class="rafaleVentJour">Rafale</p>
+                        </div>
+                        <div class="humiditeJour">
+                            <img src="../assets/infoSecondaire/goutteCouleur.png" alt="">
+                            <p>74%</p>
+                        </div> -->
+                    </div>
+                </article>
+                <article class="dayInfoBis">
+                    <section class="descriptifMeteoJour dayInfoBisClair">
+                        <h2>Description météo</h2>
+                        <p>Éclaircie</p>
+                    </section>
+                    <section class="teperatureMeteoJour  dayInfoBisFonce">
+                        <h2>Température</h2>
+                        <p>15°C</p>
+                    </section>
+                    <section class="teperatureMinMeteoJour dayInfoBisClair">
+                        <h2>Température minimum</h2>
+                        <p>12°C</p>
+                    </section>
+                    <section class="teperatureMaxMeteoJour dayInfoBisFonce">
+                        <h2>Température maximum</h2>
+                        <p>21°C</p>
+                    </section>
+                    <section class="ventMeteoJour dayInfoBisClair">
+                        <h2>Vent</h2>
+                        <p>14 km/h - Nord</p>
+                    </section>
+                    <section class="ventRafaleMeteoJour dayInfoBisFonce">
+                        <h2>Rafale de vent</h2>
+                        <p>34 km/h</p>
+                    </section>
+                    <section class="LeverSoleilMeteoJour dayInfoBisClair">
+                        <h2>Lever du soleil</h2>
+                        <p>5h54</p>
+                    </section>
+                    <section class="CoucherSoleilMeteoJour dayInfoBisFonce">
+                        <h2>Cucher du soleil</h2>
+                        <p>22h30</p>
+                    </section>
+                    <section class="LeverLuneMeteoJour dayInfoBisClair">
+                        <h2>Lever de la lune</h2>
+                        <p>2h34</p>
+                    </section>
+                    <section class="CoucherLunelMeteoJour dayInfoBisFonce">
+                        <h2>Coucher de la lune</h2>
+                        <p>14h18</p>
+                    </section>
+                </article>
+            </section>
         </section>
+
+
+
     </main>
 
     <footer>

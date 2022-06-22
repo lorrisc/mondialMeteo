@@ -34,6 +34,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
+                console.log(data)
                 /**
                 * *DATE ACTUEL
                 */
