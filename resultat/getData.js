@@ -205,10 +205,10 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
                 //*JOUR -- JOUR -- JOUR -- JOUR
-                //*TOP NAVBAR JOUR
                 for (i = 1; i <= 7; i++) {
-                    
 
+
+                    //*TOP NAVBAR JOUR
                     let infoDayPrincipal = document.createElement('Article');
                     infoDayPrincipal.className = "dayInfo";
 
@@ -217,48 +217,196 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
                     let titreDay = document.createElement('h2');
-                    titreDay.textContent=(jour+i)+"/"+mois;
-                    
+                    titreDay.textContent = (jour + i) + "/" + mois;
+
                     infoDayPrincipal.appendChild(titreDay);
 
                     let iconMeteo = document.createElement('img');
                     iconMeteo.className = "iconMeteoJour";
-                    iconMeteo.src='../assets/iconMeteo/' + data.daily[i].weather[0].icon + '.png';
+                    iconMeteo.src = '../assets/iconMeteo/' + data.daily[i].weather[0].icon + '.png';
                     infoDayPrincipal.appendChild(iconMeteo);
 
                     let tempDay = document.createElement('p');
-                    tempDay.className="tempDay"
-                    tempDay.textContent=Math.round(data.daily[i].temp.day)+"°C"
+                    tempDay.className = "tempDay"
+                    tempDay.textContent = Math.round(data.daily[i].temp.day) + "°C"
                     infoDayPrincipal.appendChild(tempDay);
 
                     let tempDayMin = document.createElement('p');
-                    tempDayMin.className="tempDayMin blue"
-                    tempDayMin.textContent=data.daily[i].temp.min+"°C"
+                    tempDayMin.className = "tempDayMin blue"
+                    tempDayMin.textContent = Math.round(data.daily[i].temp.min) + "°C min"
                     infoDayPrincipal.appendChild(tempDayMin);
 
                     let tempDayMax = document.createElement('p');
-                    tempDayMax.className="tempDayMax red"
-                    tempDayMax.textContent=data.daily[i].temp.max+"°C"
+                    tempDayMax.className = "tempDayMax red"
+                    tempDayMax.textContent = Math.round(data.daily[i].temp.max) + "°C max"
                     infoDayPrincipal.appendChild(tempDayMax);
 
                     let ventDay = document.createElement('div');
-                    ventDay.className="ventPrincipalJour"
+                    ventDay.className = "ventPrincipalJour"
                     infoDayPrincipal.appendChild(ventDay);
 
                     let directionVentDay = document.createElement('img');
-                    directionVentDay.src='../assets/infoSecondaire/directionVent.png';
+                    directionVentDay.src = '../assets/infoSecondaire/directionVent.png';
                     directionVentDay.style.transform = 'rotate(' + data.daily[i].wind_deg + 'deg)';
                     ventDay.appendChild(directionVentDay);
 
 
                     let ventDayValue = document.createElement('p')
-                    ventDayValue.textContent = Math.round(data.daily[i].wind_speed * 3.6)+"km/h";
+                    ventDayValue.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h";
                     ventDay.appendChild(ventDayValue);
 
                     let iconSousInfo = document.createElement('i')
-                    iconSousInfo.className="fa-solid fa-caret-down fa-xl"
+                    iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
                     infoDayPrincipal.appendChild(iconSousInfo);
 
+                    //*INFO DEROULANT
+                    let infoDayDeroulant = document.createElement('Article');
+                    infoDayDeroulant.className = "dayInfoBis";
+
+                    sectionJour.appendChild(infoDayDeroulant);
+
+                    //*Description
+                    let descriptifJour = document.createElement('section');
+                    descriptifJour.className = "descriptifMeteoJour dayInfoBisClair";
+                    infoDayDeroulant.appendChild(descriptifJour);
+
+                    let titleDescrJ = document.createElement('h2');
+                    titleDescrJ.textContent = "Description météo"
+                    descriptifJour.appendChild(titleDescrJ);
+
+                    let textDescrJ = document.createElement('p');
+                    textDescrJ.textContent = data.daily[i].weather[0].description
+                    descriptifJour.appendChild(textDescrJ);
+
+                    //*temp
+                    let temperatureJour = document.createElement('section');
+                    temperatureJour.className = "temperatureMeteoJour dayInfoBisFonce";
+                    infoDayDeroulant.appendChild(temperatureJour);
+
+                    let titleTempJ = document.createElement('h2');
+                    titleTempJ.textContent = "Température"
+                    temperatureJour.appendChild(titleTempJ);
+
+                    let textTempJ = document.createElement('p');
+                    textTempJ.textContent = Math.round(data.daily[i].temp.day) + "°C"
+                    temperatureJour.appendChild(textTempJ);
+
+                    //*temp minimum
+                    let temperatureMinJour = document.createElement('section');
+                    temperatureMinJour.className = "temperatureMinMeteoJour dayInfoBisClair";
+                    infoDayDeroulant.appendChild(temperatureMinJour);
+
+                    let titleTempMinJ = document.createElement('h2');
+                    titleTempMinJ.textContent = "Température minimum"
+                    temperatureMinJour.appendChild(titleTempMinJ);
+
+                    let textTempMinJ = document.createElement('p');
+                    textTempMinJ.textContent = Math.round(data.daily[i].temp.min) + "°C"
+                    temperatureMinJour.appendChild(textTempMinJ);
+
+                    //*temp maximum
+                    let temperatureMaxJour = document.createElement('section');
+                    temperatureMaxJour.className = "temperatureMinMeteoJour dayInfoBisFonce";
+                    infoDayDeroulant.appendChild(temperatureMaxJour);
+
+                    let titleTempMaxJ = document.createElement('h2');
+                    titleTempMaxJ.textContent = "Température maximum"
+                    temperatureMaxJour.appendChild(titleTempMaxJ);
+
+                    let textTempMaxJ = document.createElement('p');
+                    textTempMaxJ.textContent = Math.round(data.daily[i].temp.max) + "°C"
+                    temperatureMaxJour.appendChild(textTempMaxJ);
+
+                    //*vent
+                    let ventJour = document.createElement('section');
+                    ventJour.className = "ventMeteoJour dayInfoBisClair";
+                    infoDayDeroulant.appendChild(ventJour);
+
+                    let titleVentJ = document.createElement('h2');
+                    titleVentJ.textContent = "Vent"
+                    ventJour.appendChild(titleVentJ);
+
+                    let textVentJ = document.createElement('p');
+                    textVentJ.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h - ADDDIRECTION";
+                    ventJour.appendChild(textVentJ);
+
+                    //*vent rafale
+                    let ventRafaleJour = document.createElement('section');
+                    ventRafaleJour.className = "ventRafaleMeteoJour dayInfoBisFonce";
+                    infoDayDeroulant.appendChild(ventRafaleJour);
+
+                    let titleVentRafaleJ = document.createElement('h2');
+                    titleVentRafaleJ.textContent = "Rafale de vent"
+                    ventRafaleJour.appendChild(titleVentRafaleJ);
+
+                    let textVentRafaleJ = document.createElement('p');
+                    textVentRafaleJ.textContent = Math.round(data.daily[i].wind_gust * 3.6) + " km/h";
+                    ventRafaleJour.appendChild(textVentRafaleJ);
+
+                    //*humidité
+                    let humiditeJour = document.createElement('section');
+                    humiditeJour.className = "humiditeMeteoJour dayInfoBisClair";
+                    infoDayDeroulant.appendChild(humiditeJour);
+
+                    let titleHumiditeJ = document.createElement('h2');
+                    titleHumiditeJ.textContent = "Humidité"
+                    humiditeJour.appendChild(titleHumiditeJ);
+
+                    let textHumiditeJ = document.createElement('p');
+                    textHumiditeJ.textContent = data.daily[i].humidity + "%";
+                    humiditeJour.appendChild(textHumiditeJ);
+
+                    //*lever du soleil
+                    let leverSoleilJour = document.createElement('section');
+                    leverSoleilJour.className = "LeverSoleilMeteoJour dayInfoBisFonce";
+                    infoDayDeroulant.appendChild(leverSoleilJour);
+
+                    let titleLeverSoleilJ = document.createElement('h2');
+                    titleLeverSoleilJ.textContent = "Lever du soleil"
+                    leverSoleilJour.appendChild(titleLeverSoleilJ);
+
+                    let textLeverSoleilJ = document.createElement('p');
+                    textLeverSoleilJ.textContent ="00h00";
+                    leverSoleilJour.appendChild(textLeverSoleilJ);
+
+                    //*Coucher du soleil
+                    let CoucherSoleilJour = document.createElement('section');
+                    CoucherSoleilJour.className = "CoucherSoleilMeteoJour dayInfoBisClair";
+                    infoDayDeroulant.appendChild(CoucherSoleilJour);
+
+                    let titleCoucherSoleilJ = document.createElement('h2');
+                    titleCoucherSoleilJ.textContent = "Lever du soleil"
+                    CoucherSoleilJour.appendChild(titleCoucherSoleilJ);
+
+                    let textCoucherSoleilJ = document.createElement('p');
+                    textCoucherSoleilJ.textContent ="01h00";
+                    CoucherSoleilJour.appendChild(textCoucherSoleilJ);
+
+                    //*lever du Lune
+                    let leverLuneJour = document.createElement('section');
+                    leverLuneJour.className = "LeverLuneMeteoJour dayInfoBisFonce";
+                    infoDayDeroulant.appendChild(leverLuneJour);
+
+                    let titleLeverLuneJ = document.createElement('h2');
+                    titleLeverLuneJ.textContent = "Lever de la lune"
+                    leverLuneJour.appendChild(titleLeverLuneJ);
+
+                    let textLeverLuneJ = document.createElement('p');
+                    textLeverLuneJ.textContent ="02h00";
+                    leverLuneJour.appendChild(textLeverLuneJ);
+
+                    //*Coucher du soleil
+                    let CoucherLuneJour = document.createElement('section');
+                    CoucherLuneJour.className = "CoucherLuneMeteoJour dayInfoBisClair";
+                    infoDayDeroulant.appendChild(CoucherLuneJour);
+
+                    let titleCoucherLuneJ = document.createElement('h2');
+                    titleCoucherLuneJ.textContent = "Coucher de la lune"
+                    CoucherLuneJour.appendChild(titleCoucherLuneJ);
+
+                    let textCoucherLuneJ = document.createElement('p');
+                    textCoucherLuneJ.textContent ="03h00";
+                    CoucherLuneJour.appendChild(textCoucherLuneJ);
 
                 }
 
