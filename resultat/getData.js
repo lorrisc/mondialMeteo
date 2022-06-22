@@ -257,6 +257,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                     let iconSousInfo = document.createElement('i')
                     iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
+                    iconSousInfo.setAttribute('id',i+"buttonSousMenu");
                     infoDayPrincipal.appendChild(iconSousInfo);
 
                     //*INFO DEROULANT

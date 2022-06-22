@@ -123,7 +123,7 @@ h1 {
 /**INFORMATIONS PRINCIPALES*/
 #contenuInfoPrincipal {
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 9px;
 
     display: flex;
     flex-direction: column;
@@ -258,8 +258,8 @@ h1 {
 }
 
 #contenuSoleil,
-#contenuLune {
-    margin: 0 0 25px 0;
+#contenuLune,#contenuInfoJours,#contenuInfoHeures {
+    margin: 0 0 9px 0;
 }
 
 
@@ -314,8 +314,8 @@ h1 {
 
 
 
-#contenuInfoJours {
-    display: flex;
+#contenuInfoJours,#contenuInfoHeures {
+    display: none;
     flex-direction: column;
 
     width: 100%;
@@ -329,6 +329,10 @@ h1 {
     height: 95px;
     font-size: 1.1em;
     padding: 0 15px;
+}
+
+.dayInfo i {
+    cursor: pointer;
 }
 
 .contenuPrincipalJour .iconMeteoJour {
@@ -375,28 +379,32 @@ h1 {
 
 /**Informations bis meteo jour */
 .dayInfoBis {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
-.dayInfoBis section{
+
+.dayInfoBis section {
     display: flex;
     align-items: center;
     padding: 0 35px;
     height: 60px;
 }
-.dayInfoBis section h2{
+
+.dayInfoBis section h2 {
     width: 50%;
     text-align: left;
     font-weight: 400;
-    color:#75d6ff;
+    color: #75d6ff;
 }
-.dayInfoBis section p{
+
+.dayInfoBis section p {
     font-weight: 600;
 }
 
-.dayInfoBisClair{
+.dayInfoBisClair {
     background-color: #135EA4;
 }
-.dayInfoBisFonce{
+
+.dayInfoBisFonce {
     background-color: #115592;
 }
