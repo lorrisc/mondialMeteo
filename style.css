@@ -13,7 +13,7 @@
 /**HEADER -- HEADER -- HEADER*/
 header {
     height: 7vh;
-    background-color: #3C8EEF;
+    background-color: #115592;
 
     display: flex;
     justify-content: center;
@@ -39,12 +39,12 @@ header a {
 }
 
 header a:hover {
-    background-color: #4C7CDA;
+    background-color: #025095;
 }
 
 /**MAIN -- MAIN -- MAIN*/
 main {
-    min-height: 93vh;
+    min-height: 86vh;
     background-color: #efe9f4;
 
     display: flex;
@@ -171,4 +171,26 @@ h2 {
     cursor: pointer;
 
     font-weight: 900;
+}
+
+
+
+/**FOOTER -- FOOTER -- FOOTER*/
+footer{
+    height: 7vh;
+    background-color: #115592;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+.lineFooter{
+    width: 13%;
+    height: 1px;
+    background-color: white;
+}
+footer p {
+    margin: 0 20px;
 }
