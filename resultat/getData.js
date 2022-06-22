@@ -427,8 +427,8 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     let infoHeurePrincipal = document.createElement('Article');
                     infoHeurePrincipal.className = "heureInfo";
 
-                    let sectionHeuer = document.getElementById("contenuInfoHeures");
-                    sectionHeuer.appendChild(infoHeurePrincipal);
+                    let sectionHeure = document.getElementById("contenuInfoHeures");
+                    sectionHeure.appendChild(infoHeurePrincipal);
 
                     let titreHeure = document.createElement('h2');
                     titreHeure.textContent = heure+i+" h 00";
@@ -469,6 +469,91 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
                     iconSousInfo.setAttribute('id', i + "buttonSousMenu");
                     infoHeurePrincipal.appendChild(iconSousInfo);
+
+                    //*INFO DEROULANT
+                    let infoHeureDeroulant = document.createElement('Article');
+                    infoHeureDeroulant.className = "heureInfoBis";
+
+                    sectionHeure.appendChild(infoHeureDeroulant);
+
+                    //*Description
+                    let descriptifHeure = document.createElement('section');
+                    descriptifHeure.className = "descriptifMeteoHeure heureInfoBisClair";
+                    infoHeureDeroulant.appendChild(descriptifHeure);
+
+                    let titleDescrH = document.createElement('h2');
+                    titleDescrH.textContent = "Description météo"
+                    descriptifHeure.appendChild(titleDescrH);
+
+                    let textDescrH = document.createElement('p');
+                    textDescrH.textContent = data.hourly[i].weather[0].description
+                    descriptifHeure.appendChild(textDescrH);
+
+                    //*temp
+                    let temperatureHeure = document.createElement('section');
+                    temperatureHeure.className = "temperatureMeteoHeure heureInfoBisFonce";
+                    infoHeureDeroulant.appendChild(temperatureHeure);
+
+                    let titleTempH = document.createElement('h2');
+                    titleTempH.textContent = "Température"
+                    temperatureHeure.appendChild(titleTempH);
+
+                    let textTempH = document.createElement('p');
+                    textTempH.textContent = Math.round(data.hourly[i].temp) + "°C"
+                    temperatureHeure.appendChild(textTempH);
+
+                    //*temp ressentie
+                    let temperatureRessentiJour = document.createElement('section');
+                    temperatureRessentiJour.className = "temperatureRessentiMeteoJour dayInfoBisClair";
+                    infoHeureDeroulant.appendChild(temperatureRessentiJour);
+
+                    let titleTempRessentiJ = document.createElement('h2');
+                    titleTempRessentiJ.textContent = "Température ressentie"
+                    temperatureRessentiJour.appendChild(titleTempRessentiJ);
+
+                    let textTempRessentiJ = document.createElement('p');
+                    textTempRessentiJ.textContent = Math.round(data.hourly[i].feels_like) + "°C"
+                    temperatureRessentiJour.appendChild(textTempRessentiJ);
+
+
+                    //*vent
+                    let ventHeureSous = document.createElement('section');
+                    ventHeureSous.className = "ventMeteoHeure dayInfoBisClair";
+                    infoHeureDeroulant.appendChild(ventHeureSous);
+
+                    let titleVentHSous = document.createElement('h2');
+                    titleVentHSous.textContent = "Vent"
+                    ventHeureSous.appendChild(titleVentHSous);
+
+                    let textVentHSous = document.createElement('p');
+                    textVentHSous.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h - ADDDIRECTION";
+                    ventHeureSous.appendChild(textVentHSous);
+
+                    //*vent rafale
+                    let ventRafaleHeure = document.createElement('section');
+                    ventRafaleHeure.className = "ventRafaleMeteoHeure dayInfoBisFonce";
+                    infoHeureDeroulant.appendChild(ventRafaleHeure);
+
+                    let titleVentRafaleH = document.createElement('h2');
+                    titleVentRafaleH.textContent = "Rafales de vent"
+                    ventRafaleHeure.appendChild(titleVentRafaleH);
+
+                    let textVentRafaleH = document.createElement('p');
+                    textVentRafaleH.textContent = Math.round(data.hourly[i].wind_gust * 3.6) + " km/h";
+                    ventRafaleHeure.appendChild(textVentRafaleH);
+
+                    //*humidité
+                    let humiditeHeure = document.createElement('section');
+                    humiditeHeure.className = "humiditeMeteoHeure dayInfoBisClair";
+                    infoHeureDeroulant.appendChild(humiditeHeure);
+
+                    let titleHumiditeH = document.createElement('h2');
+                    titleHumiditeH.textContent = "Humidité"
+                    humiditeHeure.appendChild(titleHumiditeH);
+
+                    let textHumiditeH = document.createElement('p');
+                    textHumiditeH.textContent = data.hourly[i].humidity + "%";
+                    humiditeHeure.appendChild(textHumiditeH);
                 }
 
 
