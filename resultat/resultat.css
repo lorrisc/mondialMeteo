@@ -345,8 +345,10 @@ h1 {
 }
 
 .dayInfo img {
-    width: 25px;
-    margin-right: 5px;
+    width: 35px;
+}
+.ventPrincipalJour p{
+    margin-left: 10px;
 }
 
 .blue {
