@@ -257,7 +257,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                     let iconSousInfo = document.createElement('i')
                     iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
-                    iconSousInfo.setAttribute('id',i+"buttonSousMenu");
+                    iconSousInfo.setAttribute('id', i + "buttonSousMenu");
                     infoDayPrincipal.appendChild(iconSousInfo);
 
                     //*INFO DEROULANT
@@ -337,7 +337,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     infoDayDeroulant.appendChild(ventRafaleJour);
 
                     let titleVentRafaleJ = document.createElement('h2');
-                    titleVentRafaleJ.textContent = "Rafale de vent"
+                    titleVentRafaleJ.textContent = "Rafales de vent"
                     ventRafaleJour.appendChild(titleVentRafaleJ);
 
                     let textVentRafaleJ = document.createElement('p');
@@ -367,7 +367,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     leverSoleilJour.appendChild(titleLeverSoleilJ);
 
                     let textLeverSoleilJ = document.createElement('p');
-                    textLeverSoleilJ.textContent ="00h00";
+                    textLeverSoleilJ.textContent = "00h00";
                     leverSoleilJour.appendChild(textLeverSoleilJ);
 
                     //*Coucher du soleil
@@ -380,7 +380,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     CoucherSoleilJour.appendChild(titleCoucherSoleilJ);
 
                     let textCoucherSoleilJ = document.createElement('p');
-                    textCoucherSoleilJ.textContent ="01h00";
+                    textCoucherSoleilJ.textContent = "01h00";
                     CoucherSoleilJour.appendChild(textCoucherSoleilJ);
 
                     //*lever du Lune
@@ -393,7 +393,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     leverLuneJour.appendChild(titleLeverLuneJ);
 
                     let textLeverLuneJ = document.createElement('p');
-                    textLeverLuneJ.textContent ="02h00";
+                    textLeverLuneJ.textContent = "02h00";
                     leverLuneJour.appendChild(textLeverLuneJ);
 
                     //*Coucher du soleil
@@ -406,9 +406,69 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     CoucherLuneJour.appendChild(titleCoucherLuneJ);
 
                     let textCoucherLuneJ = document.createElement('p');
-                    textCoucherLuneJ.textContent ="03h00";
+                    textCoucherLuneJ.textContent = "03h00";
                     CoucherLuneJour.appendChild(textCoucherLuneJ);
 
+
+
+                }
+
+
+
+
+
+
+
+                //*HEURES -- HEURES -- HEURES -- HEURES
+                for (i = 1; i <= 7; i++) {
+
+
+                    //*TOP NAVBAR JOUR
+                    let infoHeurePrincipal = document.createElement('Article');
+                    infoHeurePrincipal.className = "heureInfo";
+
+                    let sectionHeuer = document.getElementById("contenuInfoHeures");
+                    sectionHeuer.appendChild(infoHeurePrincipal);
+
+                    let titreHeure = document.createElement('h2');
+                    titreHeure.textContent = heure+i+" h 00";
+
+                    infoHeurePrincipal.appendChild(titreHeure);
+
+                    let iconMeteo = document.createElement('img');
+                    iconMeteo.className = "iconMeteoHeure";
+                    iconMeteo.src = '../assets/iconMeteo/' + data.hourly[i].weather[0].icon + '.png';
+                    infoHeurePrincipal.appendChild(iconMeteo);
+
+                    let tempHeure = document.createElement('p');
+                    tempHeure.className = "tempHeure"
+                    tempHeure.textContent = Math.round(data.hourly[i].temp) + "°C"
+                    infoHeurePrincipal.appendChild(tempHeure);
+ 
+                    let tempRessentiHeure = document.createElement('p');
+                    tempRessentiHeure.className = "tempRessentiHeure"
+                    tempRessentiHeure.textContent = Math.round(data.hourly[i].feels_like) + "°C ressenti"
+                    infoHeurePrincipal.appendChild(tempRessentiHeure);
+
+
+                    let ventHeure = document.createElement('div');
+                    ventHeure.className = "ventPrincipalHeure"
+                    infoHeurePrincipal.appendChild(ventHeure);
+
+                    let directionVentHeure = document.createElement('img');
+                    directionVentHeure.src = '../assets/infoSecondaire/directionVent.png';
+                    directionVentHeure.style.transform = 'rotate(' + data.hourly[i].wind_deg + 'deg)';
+                    ventHeure.appendChild(directionVentHeure);
+
+
+                    let ventHeureValue = document.createElement('p')
+                    ventHeureValue.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h";
+                    ventHeure.appendChild(ventHeureValue);
+
+                    let iconSousInfo = document.createElement('i')
+                    iconSousInfo.className = "fa-solid fa-caret-down fa-xl"
+                    iconSousInfo.setAttribute('id', i + "buttonSousMenu");
+                    infoHeurePrincipal.appendChild(iconSousInfo);
                 }
 
 

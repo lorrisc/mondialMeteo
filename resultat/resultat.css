@@ -52,6 +52,8 @@ h1 {
     flex-direction: column;
 
     cursor: pointer;
+
+    transition: all 0.3s ease-out;
 }
 
 #villeFavoriButton:hover {
@@ -102,11 +104,7 @@ h1 {
 
     cursor: pointer;
 
-    -webkit-transition: background 300ms ease-out;
-    -moz-transition: background 300ms ease-out;
-    -ms-transition: background 300ms ease-out;
-    -o-transition: background 300ms ease-out;
-    transition: background 300ms ease-out;
+    transition: all 0.3s ease-out;
 }
 
 #typeDonneMeteo div:hover,
@@ -118,6 +116,7 @@ h1 {
 .rightSeparation {
     border-right: solid;
     border-width: 1px;
+    border-color:#2577BB
 }
 
 /**INFORMATIONS PRINCIPALES*/
@@ -321,7 +320,7 @@ h1 {
     width: 100%;
 }
 
-.dayInfo {
+.dayInfo,.heureInfo {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -329,25 +328,36 @@ h1 {
     height: 95px;
     font-size: 1.1em;
     padding: 0 15px;
+    
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #115592;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease-out;
+}
+.dayInfo:hover,.heureInfo:hover {
+    background-color: #115592;
 }
 
-.dayInfo i {
+.dayInfo i,.heureInfo i {
     cursor: pointer;
 }
 
-.contenuPrincipalJour .iconMeteoJour {
+.contenuPrincipalJour .iconMeteoJour,.contenuInfoHeures .iconMeteoHeure {
     width: 35px;
 }
 
-.dayInfo h2 {
+.dayInfo h2, .heureInfo h2 {
     font-size: 1.2em;
     font-weight: 700;
 }
 
-.dayInfo img {
+.dayInfo img,.heureInfo img {
     width: 35px;
 }
-.ventPrincipalJour p{
+.ventPrincipalJour p, .ventPrincipalHeure p{
     margin-left: 10px;
 }
 
@@ -359,20 +369,20 @@ h1 {
     color: #F5C47A;
 }
 
-.ventPrincipalJour {
+.ventPrincipalJour, .ventPrincipalHeure {
     display: flex;
 }
 
-.ventPrincipalJour img {
+.ventPrincipalJour img,.ventPrincipalHeure img {
     width: 15px;
 }
 
-.rafaleVentJour {
+.rafaleVentJour, .ragaleVentHeure {
     font-size: 0.9em;
     font-weight: 300;
 }
 
-.humiditeJour {
+.humiditeJour, .humiditeHeure {
     display: flex;
     align-items: center;
 }
@@ -381,7 +391,7 @@ h1 {
 
 /**Informations bis meteo jour */
 .dayInfoBis {
-    display: none;
+    display: flex;
     flex-direction: column;
 }
 
