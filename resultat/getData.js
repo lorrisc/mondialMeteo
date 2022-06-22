@@ -448,7 +448,9 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         j++;
                     }
                     else {
-                        titreHeure.textContent = heure + i + " h 00";
+                        console.log(heure)
+                        console.log(i)
+                        titreHeure.textContent = (heure + i) + " h 00";
                     }
 
                     infoHeurePrincipal.appendChild(titreHeure);
