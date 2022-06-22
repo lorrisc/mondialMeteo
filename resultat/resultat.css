@@ -396,7 +396,7 @@ h1 {
 }
 
 .dayInfoBis section, .heureInfoBis section {
-    display: none;
+    display: flex;
     align-items: center;
     padding: 0 35px;
     height: 60px;

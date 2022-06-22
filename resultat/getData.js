@@ -115,7 +115,9 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let directionVent = document.querySelector('#vent img');
                 directionVent.style.transform = 'rotate(' + data.current.wind_deg + 'deg)';
 
-                getNameDirection(data.current.wind_deg);
+                let textDirection = document.querySelector('#directionVentText');
+                let directionResultat = getNameDirection(data.current.wind_deg);
+                textDirection.textContent=directionResultat;
 
 
                 /**
@@ -327,8 +329,10 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     titleVentJ.textContent = "Vent"
                     ventJour.appendChild(titleVentJ);
 
+                    directionResultat = getNameDirection(data.daily[i].wind_deg);
+
                     let textVentJ = document.createElement('p');
-                    textVentJ.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h - ADDDIRECTION";
+                    textVentJ.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h - "+directionResultat;
                     ventJour.appendChild(textVentJ);
 
                     //*vent rafale
@@ -524,20 +528,22 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                     //*vent
                     let ventHeureSous = document.createElement('section');
-                    ventHeureSous.className = "ventMeteoHeure dayInfoBisClair";
+                    ventHeureSous.className = "ventMeteoHeure heureInfoBisFonce";
                     infoHeureDeroulant.appendChild(ventHeureSous);
 
                     let titleVentHSous = document.createElement('h2');
                     titleVentHSous.textContent = "Vent"
                     ventHeureSous.appendChild(titleVentHSous);
 
+                    directionResultat = getNameDirection(data.hourly[i].wind_deg);
+
                     let textVentHSous = document.createElement('p');
-                    textVentHSous.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h - ADDDIRECTION";
+                    textVentHSous.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h - "+directionResultat;
                     ventHeureSous.appendChild(textVentHSous);
 
                     //*vent rafale
                     let ventRafaleHeure = document.createElement('section');
-                    ventRafaleHeure.className = "ventRafaleMeteoHeure dayInfoBisFonce";
+                    ventRafaleHeure.className = "ventRafaleMeteoHeure dayInfoBisClair";
                     infoHeureDeroulant.appendChild(ventRafaleHeure);
 
                     let titleVentRafaleH = document.createElement('h2');
@@ -550,7 +556,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                     //*humidité
                     let humiditeHeure = document.createElement('section');
-                    humiditeHeure.className = "humiditeMeteoHeure dayInfoBisClair";
+                    humiditeHeure.className = "humiditeMeteoHeure heureInfoBisFonce";
                     infoHeureDeroulant.appendChild(humiditeHeure);
 
                     let titleHumiditeH = document.createElement('h2');
