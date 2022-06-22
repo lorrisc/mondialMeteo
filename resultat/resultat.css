@@ -340,6 +340,9 @@ h1 {
 .dayInfo:hover,.heureInfo:hover {
     background-color: #115592;
 }
+.infoPrincipalOpen{
+    background-color: #115592;
+}
 
 .dayInfo i,.heureInfo i {
     cursor: pointer;

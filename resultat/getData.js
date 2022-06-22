@@ -585,26 +585,28 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 // console.log(childNode)
 
 
-                let iconForOpenJour = document.querySelectorAll('.buttonSousMenuJour');//resultat instantannée
+                let iconForOpenJour = document.querySelectorAll('.dayInfo');
                 for (let i = 0; i < iconForOpenJour.length; i++) {
                     let statusInfo = 0
                     iconForOpenJour[i].addEventListener("click", () => {
+
                         let parentElement = null
                         parentElement = iconForOpenJour[i].parentNode;
-                        let parentParentElement = null
-                        parentParentElement = parentElement.parentNode;
 
                         let lastChildElement = null
-                        lastChildElement = parentParentElement.lastChild
+                        lastChildElement = parentElement.lastChild
 
                         console.log(lastChildElement)
                         if (statusInfo == 0) {
+                            iconForOpenJour[i].classList.add("infoPrincipalOpen");
+
                             console.log("ouverture")
                             lastChildElement.style.display = "flex"
 
                             statusInfo = 1
                         }
                         else {
+                            iconForOpenJour[i].classList.remove("infoPrincipalOpen");
 
                             console.log("fermeture")
 
@@ -613,27 +615,29 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         }
                     });
                 }
-                let iconForOpenHeure = document.querySelectorAll('.buttonSousMenuHeure');//resultat instantannée
+                let iconForOpenHeure = document.querySelectorAll('.heureInfo');//resultat instantannée
                 for (let i = 0; i < iconForOpenHeure.length; i++) {
                     let statusInfo = 0
                     iconForOpenHeure[i].addEventListener("click", () => {
                         let parentElement = null
                         parentElement = iconForOpenHeure[i].parentNode;
-                        let parentParentElement = null
-                        parentParentElement = parentElement.parentNode;
+
 
                         let lastChildElement = null
-                        lastChildElement = parentParentElement.lastChild
+                        lastChildElement = parentElement.lastChild
 
                         console.log(lastChildElement)
 
                         if (statusInfo == 0) {
+                            iconForOpenHeure[i].classList.add("infoPrincipalOpen");
+
                             console.log("ouverture")
                             lastChildElement.style.display = "flex"
 
                             statusInfo = 1
                         }
                         else {
+                            iconForOpenHeure[i].classList.remove("infoPrincipalOpen");
 
                             console.log("fermeture")
 
