@@ -418,9 +418,9 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
 
-
+                let j = 0; //variable si heure dépasse minuit
                 //*HEURES -- HEURES -- HEURES -- HEURES
-                for (i = 1; i <= 7; i++) {
+                for (i = 1; i <= 12; i++) {
 
 
                     //*TOP NAVBAR JOUR
@@ -431,7 +431,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     sectionHeure.appendChild(infoHeurePrincipal);
 
                     let titreHeure = document.createElement('h2');
-                    titreHeure.textContent = heure+i+" h 00";
+                    if (heure + i == 24 || j > 0) {
+                        titreHeure.textContent = "0" + j + " h 00";
+                        j++;
+                    }
+                    else {
+                        titreHeure.textContent = heure + i + " h 00";
+                    }
 
                     infoHeurePrincipal.appendChild(titreHeure);
 
@@ -444,7 +450,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     tempHeure.className = "tempHeure"
                     tempHeure.textContent = Math.round(data.hourly[i].temp) + "°C"
                     infoHeurePrincipal.appendChild(tempHeure);
- 
+
                     let tempRessentiHeure = document.createElement('p');
                     tempRessentiHeure.className = "tempRessentiHeure"
                     tempRessentiHeure.textContent = Math.round(data.hourly[i].feels_like) + "°C ressenti"
