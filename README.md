@@ -7,7 +7,6 @@ Ce projet web permet à l'utilisateur d'accéder à une __interface de météo__
 * Informations météo instantané
 * Informations météo 12 heures (heure par heure)
 * Informations météo 7 jours (jour par jour)
-<br>
 * Lever et coucher du soleil
 * Lever et coucher de la lune
 * Information de polution
