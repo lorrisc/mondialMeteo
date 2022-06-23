@@ -5,17 +5,13 @@
     <!--basic meta-->
     <meta charset="utf-8">
     <meta name="author" content="Lorris Crappier">
-    <title>Meteo Soleil Lune Pollution</title>
+    <title>PRÉVISION MÉTÉO MONDIALE</title>
 
     <!--Mobile-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!--CSS-->
     <link rel="stylesheet" href="style.css">
-
-    <!--fontawesome-->
-
-    <!--FAVICON-->
 </head>
 
 <body>
@@ -23,11 +19,11 @@
 
     </header>
 
-
-
     <main>
         <section id="conteneurIndex" class="conteneurMain">
             <h2>Pour pouvoir accéder à la météo veuillez choisir votre méthode de localisation.</h2>
+
+            <!--Bouton principal-->
             <section id="buttonTypeLocalisation">
                 <div id="geolocalisationButton" class="buttonIndex">
                     <p>Me géolocaliser</p>
@@ -36,23 +32,28 @@
                     <p>Coordonnées géographiques</p>
                 </div>
             </section>
+
+            <!--Formulaire coordonnée précise-->
             <section id="formulaireCoordonneGeo">
                 <section id="latitude">
                     <label for="latitudeUser">Latitude</label>
                     <input type="text" name="latitudeUser" id="latitudeUser">
                 </section>
+
                 <section id="longitude">
                     <label for="longitudeUser">Longitude</label>
                     <input type="text" name="longitudeUser" id="longitudeUser">
                 </section>
+
                 <a id="validationForm">
                     <p>Rechercher</p>
                 </a>
             </section>
+
+            <!--Message d'erreur-->
             <p id="geolocationError" class="warningMessage">Erreur de géolocalisation</p>
             <p id="coordGeoError" class="warningMessage">Coordonnées géographiques incorrect</p>
         </section>
-
     </main>
 
     <footer>
@@ -67,7 +68,6 @@
     <script src="geolocalisation.js"></script>
     <!--gestion formulaire coordonnées géographiques-->
     <script src="coordGeo.js"></script>
-
 </body>
 
 </html>
