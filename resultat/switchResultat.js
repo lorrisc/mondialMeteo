@@ -1,3 +1,5 @@
+//*
+
 let instantResultat = document.querySelector('#contenuInfoPrincipal');//resultat instantannée
 let instantResultatSoleil = document.querySelector('#contenuSoleil');//resultat instantannée soleil
 let instantResultatLune = document.querySelector('#contenuLune');//resultat instantannée lune

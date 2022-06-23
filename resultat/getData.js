@@ -34,7 +34,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
-                console.log(data)
                 /**
                 * *DATE ACTUEL
                 */
@@ -448,8 +447,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         j++;
                     }
                     else {
-                        console.log(heure)
-                        console.log(i)
                         titreHeure.textContent = (heure + i) + " h 00";
                     }
 
@@ -581,10 +578,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
                 }
-                // let childNode = document.querySelector('#villeFavoriButton');
-                // // childNode = childNode.lastChild;
-                // childNode = childNode.parentNode;
-                // console.log(childNode)
+
 
 
                 let iconForOpenJour = document.querySelectorAll('.dayInfo');
@@ -598,11 +592,9 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         let lastChildElement = null
                         lastChildElement = parentElement.lastChild
 
-                        console.log(lastChildElement)
                         if (statusInfo == 0) {
                             iconForOpenJour[i].classList.add("infoPrincipalOpen");
 
-                            console.log("ouverture")
                             lastChildElement.style.display = "flex"
 
                             statusInfo = 1
@@ -610,7 +602,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         else {
                             iconForOpenJour[i].classList.remove("infoPrincipalOpen");
 
-                            console.log("fermeture")
 
                             lastChildElement.style.display = "none";
                             statusInfo = 0;
@@ -628,12 +619,10 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         let lastChildElement = null
                         lastChildElement = parentElement.lastChild
 
-                        console.log(lastChildElement)
 
                         if (statusInfo == 0) {
                             iconForOpenHeure[i].classList.add("infoPrincipalOpen");
 
-                            console.log("ouverture")
                             lastChildElement.style.display = "flex"
 
                             statusInfo = 1
@@ -641,7 +630,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         else {
                             iconForOpenHeure[i].classList.remove("infoPrincipalOpen");
 
-                            console.log("fermeture")
 
                             lastChildElement.style.display = "none";
                             statusInfo = 0;

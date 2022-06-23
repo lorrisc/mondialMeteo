@@ -1,6 +1,8 @@
-//*Gestion apparition formulaire lors du click sur le bouton "Coordonnées géographiques".
+//*CODE JS, GÉRE L'APPARITION DU FORMULAIRE COORDONNÉE GEO UTILISATEUR ET STOCKE LA VALEUR DES INPUTS POUR API (CHANGEMENT DE PAGE)
 
-let buttonCoordGeo = document.querySelector('#coordonneGeoButton');//bouton
+//*Apparition formulaire coord géo
+
+let buttonCoordGeo = document.querySelector('#coordonneGeoButton');//bouton coordonnée géographique
 let buttonCoordGeoStatus = 0;//status du formulaire (visible, non visible)
 
 buttonCoordGeo.addEventListener("click", () => {
@@ -24,7 +26,6 @@ buttonCoordGeo.addEventListener("click", () => {
     }
 })
 
-
 //*Récupération lattitude et longitude
 
 let buttonValider = document.querySelector('#validationForm');//bouton validation formulaire
@@ -36,22 +37,11 @@ buttonValider.addEventListener("click", () => {
     textErreurCoorGeo.style.display = "none"
 
     //input formulaire
-    let latitudeInput = document.querySelector('#latitudeUser');
-    let longitudeInput = document.querySelector('#longitudeUser');
-
-    //variable données lat, long
-    let latitudeUser = null;
-    let longitudeUser = null;
-
-    //stockage value variable adéquat
-    latitudeUser = latitudeInput.value;
-    longitudeUser = longitudeInput.value;
-
-    console.log(latitudeUser)
-    console.log(longitudeUser)
+    let latitudeUser = document.querySelector('#latitudeUser').value;
+    let longitudeUser = document.querySelector('#longitudeUser').value;
 
     //vérification valeurs latitude et longitude correct
-    if ((latitudeUser != '') && (longitudeUser != '') && (latitudeUser >= -90 && latitudeUser <= 90)&& (longitudeUser >= -180 && longitudeUser <= 180)) {
+    if ((latitudeUser != '') && (longitudeUser != '') && (latitudeUser >= -90 && latitudeUser <= 90) && (longitudeUser >= -180 && longitudeUser <= 180)) {
         sessionStorage.setItem('latitudeUser', latitudeUser);
         sessionStorage.setItem('longitudeUser', longitudeUser);
 
@@ -63,6 +53,5 @@ buttonValider.addEventListener("click", () => {
         let textErreur = document.querySelector('#geolocationError');//message d'erreur
         textErreur.style.display = "block"
     }
-
 })
 
