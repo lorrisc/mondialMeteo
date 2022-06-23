@@ -3,7 +3,7 @@ let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
 //*GET CITY OF USER
-fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
+fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
@@ -610,7 +610,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
 //*GET POLUTIONS INFORMATIONS
-fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
+fetch('https://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
