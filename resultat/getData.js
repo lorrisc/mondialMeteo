@@ -1,28 +1,28 @@
+//*Récupération lattitude et longitude
 let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
+//*GET CITY OF USER
 fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
-
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
                 let villeRecherche = document.querySelectorAll('.ville');
                 let regionRecherche = document.querySelector('#regions');
-                if (data.length == 0) {
+                if (data.length == 0) {//API renvoit rien (position dans l'eau)
                     for (i = 0; i < villeRecherche.length; i++) {
-                        villeRecherche[i].textContent = ": lat" + latitude + ", longitude" + longitude;
+                        villeRecherche[i].textContent = ": lat" + latitude + ", longitude" + longitude;//affiche les coordonnées
                     }
-
                 }
                 else {
                     let villeUser = data[0].name
-                    for (i = 0; i < villeRecherche.length; i++) {
+                    for (i = 0; i < villeRecherche.length; i++) {//Boucle pour inscrire ville pour chaque text
                         villeRecherche[i].textContent = villeUser;
                     }
 
+                    //Région de l'utilisateur
                     let regionUser = data[0].state
                     regionRecherche.textContent = regionUser;
-
                 }
             })
         } else {
@@ -30,13 +30,12 @@ fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' 
         }
     })
 
+//*GET METEO INFORMATIONS
 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d&units=metric&lang=fr')
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
-                /**
-                * *DATE ACTUEL
-                */
+                //*DATE ACTUEL
                 let date = new Date();
 
                 let jour = date.getDate();
@@ -45,12 +44,12 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let minute = date.getMinutes();
                 let annee = date.getFullYear();
 
+                //*Affichage date
                 let jourDate = document.querySelector('#jourDate');
                 if (jour < 10) {
                     jour = "0" + parseInt(jour);
                 }
                 jourDate.textContent = jour;
-
 
                 let moisDate = document.querySelector('#moisDate');
                 if (mois < 10) {
@@ -73,21 +72,22 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 }
                 minDate.textContent = minute;
 
-                /**
-                 * *CONDITION METEO
-                 */
+
+                //*CONDITION METEO
+                //Description
                 let conditionMeteo = document.querySelector('#descriptionMeteo');
                 conditionMeteo.textContent = data.current.weather[0].description;
 
+                //Icon condition
                 let imgCondition = document.querySelector('#cercleDonneeMeteo img')
                 imgCondition.src = '../assets/iconMeteo/' + data.current.weather[0].icon + '.png';
 
-                /**
-                 * *INFORMATION SECONDAIRE
-                 */
+                //*INFORMATION SECONDAIRE
+                //Humdité
                 let humidity = document.querySelector('#humiditeDonnee');
                 humidity.textContent = data.current.humidity;
 
+                //Visibilité
                 let visibility = document.querySelector('#visibiliteDonnee');
                 if (((data.current.visibility / 1000).toFixed(0)) == 10) {
                     visibility.textContent = "> " + (data.current.visibility / 1000).toFixed(1);
@@ -96,44 +96,33 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     visibility.textContent = (data.current.visibility / 1000).toFixed(1);
                 }
 
-                /**
-                 * *TEMPERATURE
-                 */
+                //Température
                 let temperature = document.querySelector('#donneeTemperatureCercle');
                 temperature.textContent = Math.round(data.current.temp);
-
+                //Température ressenti
                 let feelTemp = document.querySelector('#tempRessentieDonnee');
                 feelTemp.textContent = Math.round(data.current.feels_like);
 
-                /**
-                * *VENT
-                */
+                //Vent
                 let vent = document.querySelector('#ventDonnee');
-                vent.textContent = Math.round(data.current.wind_speed * 3.6);
+                vent.textContent = Math.round(data.current.wind_speed * 3.6);//Vent en km/h
 
                 let directionVent = document.querySelector('#vent img');
-                directionVent.style.transform = 'rotate(' + data.current.wind_deg + 'deg)';
+                directionVent.style.transform = 'rotate(' + data.current.wind_deg + 'deg)';//Direction icon
 
                 let textDirection = document.querySelector('#directionVentText');
-                let directionResultat = getNameDirection(data.current.wind_deg);
-                textDirection.textContent = directionResultat;
+                let directionResultat = getNameDirection(data.current.wind_deg);//Renvoit la direction
+                textDirection.textContent = directionResultat;//Direction text
 
 
-                /**
-                * *SOLEIL
-                */
-                //*LEVER DU SOLEIL
+                //*INFORMATION DU SOLEIL
+                //lever du soleil
                 const unixTimestampLever = data.current.sunrise
-
-                const millisecondsLever = unixTimestampLever * 1000 // 1575909015000
-
+                const millisecondsLever = unixTimestampLever * 1000
                 const dateObjectLever = new Date(millisecondsLever)
-                const humanDateFormatLever = dateObjectLever.toLocaleString()
 
-                let heureLever = null
-                let minLever = null
-                heureLever = dateObjectLever.toLocaleString("FR", { hour: "numeric" }) // 10 AM
-                minLever = dateObjectLever.toLocaleString("FR", { minute: "numeric" }) // 30
+                let heureLever = dateObjectLever.toLocaleString("FR", { hour: "numeric" }) // 10 AM
+                let minLever = dateObjectLever.toLocaleString("FR", { minute: "numeric" }) // 30
 
                 let leverSoleilHeure = document.querySelector('#heureLeve');
                 leverSoleilHeure.textContent = heureLever;
@@ -141,18 +130,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let leverSoleilMinute = document.querySelector('#minuteLeve');
                 leverSoleilMinute.textContent = minLever;
 
-                //*COUCHER DU SOLEIL
+                //coucher du soleil
                 const unixTimestampCoucher = data.current.sunset
-
-                const millisecondsCoucher = unixTimestampCoucher * 1000 // 1575909015000
-
+                const millisecondsCoucher = unixTimestampCoucher * 1000
                 const dateObjectCoucher = new Date(millisecondsCoucher)
-                const humanDateFormatCoucher = dateObjectCoucher.toLocaleString()
 
-                let heureCoucher = null
-                let minCoucher = null
-                heureCoucher = dateObjectCoucher.toLocaleString("FR", { hour: "numeric" }) // 10 AM
-                minCoucher = dateObjectCoucher.toLocaleString("FR", { minute: "numeric" }) // 30
+                let heureCoucher = dateObjectCoucher.toLocaleString("FR", { hour: "numeric" }) // 10 AM
+                let minCoucher = dateObjectCoucher.toLocaleString("FR", { minute: "numeric" }) // 30
 
                 let coucherSoleilHeure = document.querySelector('#heureCouche');
                 coucherSoleilHeure.textContent = heureCoucher;
@@ -161,21 +145,14 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 coucherSoleilMinute.textContent = minCoucher;
 
 
-                /**
-                * *LUNE
-                */
-                //*LEVER DE LA LUNE
+                //*INFORMATION DE LA LUNE
+                //lever de la lune
                 const unixTimestampLeverLune = data.daily[0].moonrise;
-
-                const millisecondsLeverLune = unixTimestampLeverLune * 1000 // 1575909015000
-
+                const millisecondsLeverLune = unixTimestampLeverLune * 1000
                 const dateObjectLeverLune = new Date(millisecondsLeverLune)
-                const humanDateFormatLeverLune = dateObjectLeverLune.toLocaleString()
 
-                let heureLeverLune = null
-                let minLeverLune = null
-                heureLeverLune = dateObjectLeverLune.toLocaleString("FR", { hour: "numeric" }) // 10 AM
-                minLeverLune = dateObjectLeverLune.toLocaleString("FR", { minute: "numeric" }) // 30
+                let heureLeverLune = dateObjectLeverLune.toLocaleString("FR", { hour: "numeric" }) // 10 AM
+                let minLeverLune = dateObjectLeverLune.toLocaleString("FR", { minute: "numeric" }) // 30
 
                 let leverLuneHeure = document.querySelector('#heureLeveLune');
                 leverLuneHeure.textContent = heureLeverLune;
@@ -183,18 +160,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let leverLunelMinute = document.querySelector('#minuteLeveLune');
                 leverLunelMinute.textContent = minLeverLune;
 
-                //*COUCHER DU SOLEIL
+                //coucher de la lune
                 const unixTimestampCoucherLune = data.daily[0].moonset;
-
-                const millisecondsCoucherLune = unixTimestampCoucherLune * 1000 // 1575909015000
-
+                const millisecondsCoucherLune = unixTimestampCoucherLune * 1000
                 const dateObjectCoucherLune = new Date(millisecondsCoucherLune)
-                const humanDateFormatCoucherLune = dateObjectCoucherLune.toLocaleString()
 
-                let heureCoucherLune = null
-                let minCoucherLune = null
-                heureCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { hour: "numeric" }) // 10 AM
-                minCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { minute: "numeric" }) // 30
+                let heureCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { hour: "numeric" }) // 10 AM
+                let minCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { minute: "numeric" }) // 30
 
                 let coucherLuneHeure = document.querySelector('#heureCoucheLune');
                 coucherLuneHeure.textContent = heureCoucherLune;
@@ -206,70 +178,74 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
                 //*JOUR -- JOUR -- JOUR -- JOUR
-                for (i = 1; i <= 7; i++) {
-
-
-                    //*TOP NAVBAR JOUR
+                for (i = 1; i <= 7; i++) {//conditions sur 7 jours
+                    //*CONTENU JOUR (top & informations secondaire)
                     let conteneurMeteoJour = document.createElement('div');
                     let sectionJour = document.getElementById("contenuInfoJours");
                     sectionJour.appendChild(conteneurMeteoJour);
 
-
+                    //*TOP NAVBAR JOUR
                     let infoDayPrincipal = document.createElement('Article');
                     infoDayPrincipal.className = "dayInfo";
                     conteneurMeteoJour.appendChild(infoDayPrincipal);
 
-
-
+                    //*DATE DU JOUR
                     let titreDay = document.createElement('h2');
                     titreDay.textContent = (jour + i) + "/" + mois;
-
                     infoDayPrincipal.appendChild(titreDay);
 
+                    //*ICON METEO
                     let iconMeteo = document.createElement('img');
                     iconMeteo.className = "iconMeteoJour";
                     iconMeteo.src = '../assets/iconMeteo/' + data.daily[i].weather[0].icon + '.png';
                     infoDayPrincipal.appendChild(iconMeteo);
 
+                    //*TEMPERATURE
                     let tempDay = document.createElement('p');
                     tempDay.className = "tempDay"
                     tempDay.textContent = Math.round(data.daily[i].temp.day) + "°C"
                     infoDayPrincipal.appendChild(tempDay);
 
+                    //*TEMPERATURE MIN
                     let tempDayMin = document.createElement('p');
                     tempDayMin.className = "tempDayMin blue"
                     tempDayMin.textContent = Math.round(data.daily[i].temp.min) + "°C min"
                     infoDayPrincipal.appendChild(tempDayMin);
 
+                    //*TEMPERATURE MAX
                     let tempDayMax = document.createElement('p');
                     tempDayMax.className = "tempDayMax red"
                     tempDayMax.textContent = Math.round(data.daily[i].temp.max) + "°C max"
                     infoDayPrincipal.appendChild(tempDayMax);
 
+                    //*PARTIE VENT
                     let ventDay = document.createElement('div');
                     ventDay.className = "ventPrincipalJour"
                     infoDayPrincipal.appendChild(ventDay);
 
+                    //IMAGE
                     let directionVentDay = document.createElement('img');
                     directionVentDay.src = '../assets/infoSecondaire/directionVent.png';
                     directionVentDay.style.transform = 'rotate(' + data.daily[i].wind_deg + 'deg)';
                     ventDay.appendChild(directionVentDay);
 
-
+                    //VITESSE
                     let ventDayValue = document.createElement('p')
                     ventDayValue.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h";
                     ventDay.appendChild(ventDayValue);
 
+                    //*BOUTON OUVERTURE
                     let iconSousInfo = document.createElement('i')
                     iconSousInfo.className = "fa-solid fa-caret-down fa-xl buttonSousMenuJour"
-                    // iconSousInfo.setAttribute('id', i + "buttonSousMenuJour");
                     infoDayPrincipal.appendChild(iconSousInfo);
+
+
+
 
                     //*INFO DEROULANT
                     let infoDayDeroulant = document.createElement('Article');
                     infoDayDeroulant.className = "dayInfoBis";
                     conteneurMeteoJour.appendChild(infoDayDeroulant);
-
 
                     //*Description
                     let descriptifJour = document.createElement('section');
@@ -284,7 +260,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textDescrJ.textContent = data.daily[i].weather[0].description
                     descriptifJour.appendChild(textDescrJ);
 
-                    //*temp
+                    //*Température
                     let temperatureJour = document.createElement('section');
                     temperatureJour.className = "temperatureMeteoJour dayInfoBisFonce";
                     infoDayDeroulant.appendChild(temperatureJour);
@@ -297,7 +273,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textTempJ.textContent = Math.round(data.daily[i].temp.day) + "°C"
                     temperatureJour.appendChild(textTempJ);
 
-                    //*temp minimum
+                    //*température minimum
                     let temperatureMinJour = document.createElement('section');
                     temperatureMinJour.className = "temperatureMinMeteoJour dayInfoBisClair";
                     infoDayDeroulant.appendChild(temperatureMinJour);
@@ -310,7 +286,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textTempMinJ.textContent = Math.round(data.daily[i].temp.min) + "°C"
                     temperatureMinJour.appendChild(textTempMinJ);
 
-                    //*temp maximum
+                    //*température maximum
                     let temperatureMaxJour = document.createElement('section');
                     temperatureMaxJour.className = "temperatureMinMeteoJour dayInfoBisFonce";
                     infoDayDeroulant.appendChild(temperatureMaxJour);
@@ -338,7 +314,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textVentJ.textContent = Math.round(data.daily[i].wind_speed * 3.6) + " km/h - " + directionResultat;
                     ventJour.appendChild(textVentJ);
 
-                    //*vent rafale
+                    //*rafale de vent
                     let ventRafaleJour = document.createElement('section');
                     ventRafaleJour.className = "ventRafaleMeteoJour dayInfoBisFonce";
                     infoDayDeroulant.appendChild(ventRafaleJour);
@@ -390,7 +366,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textCoucherSoleilJ.textContent = "01h00";
                     CoucherSoleilJour.appendChild(textCoucherSoleilJ);
 
-                    //*lever du Lune
+                    //*lever de la Lune
                     let leverLuneJour = document.createElement('section');
                     leverLuneJour.className = "LeverLuneMeteoJour dayInfoBisFonce";
                     infoDayDeroulant.appendChild(leverLuneJour);
@@ -403,7 +379,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textLeverLuneJ.textContent = "02h00";
                     leverLuneJour.appendChild(textLeverLuneJ);
 
-                    //*Coucher du soleil
+                    //*Coucher de la lune
                     let CoucherLuneJour = document.createElement('section');
                     CoucherLuneJour.className = "CoucherLuneMeteoJour dayInfoBisClair";
                     infoDayDeroulant.appendChild(CoucherLuneJour);
@@ -415,9 +391,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     let textCoucherLuneJ = document.createElement('p');
                     textCoucherLuneJ.textContent = "03h00";
                     CoucherLuneJour.appendChild(textCoucherLuneJ);
-
-
-
                 }
 
 
@@ -428,19 +401,18 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 let j = 0; //variable si heure dépasse minuit
                 //*HEURES -- HEURES -- HEURES -- HEURES
                 for (i = 1; i <= 12; i++) {
-
-
-                    //*TOP NAVBAR JOUR
+                    //*contenu heure 
                     let conteneurMeteoHeure = document.createElement('div');
                     let sectionHeure = document.getElementById("contenuInfoHeures");
                     sectionHeure.appendChild(conteneurMeteoHeure);
 
 
+                    //*TOP NAVBAR JOUR
                     let infoHeurePrincipal = document.createElement('Article');
                     infoHeurePrincipal.className = "heureInfo";
                     conteneurMeteoHeure.appendChild(infoHeurePrincipal);
 
-
+                    //*heure
                     let titreHeure = document.createElement('h2');
                     if (heure + i == 24 || j > 0) {
                         titreHeure.textContent = "0" + j + " h 00";
@@ -452,22 +424,25 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                     infoHeurePrincipal.appendChild(titreHeure);
 
+                    //*icon meteo
                     let iconMeteo = document.createElement('img');
                     iconMeteo.className = "iconMeteoHeure";
                     iconMeteo.src = '../assets/iconMeteo/' + data.hourly[i].weather[0].icon + '.png';
                     infoHeurePrincipal.appendChild(iconMeteo);
 
+                    //*temperature
                     let tempHeure = document.createElement('p');
                     tempHeure.className = "tempHeure"
                     tempHeure.textContent = Math.round(data.hourly[i].temp) + "°C"
                     infoHeurePrincipal.appendChild(tempHeure);
 
+                    //*température ressenti
                     let tempRessentiHeure = document.createElement('p');
                     tempRessentiHeure.className = "tempRessentiHeure"
                     tempRessentiHeure.textContent = Math.round(data.hourly[i].feels_like) + "°C ressenti"
                     infoHeurePrincipal.appendChild(tempRessentiHeure);
 
-
+                    //*vent
                     let ventHeure = document.createElement('div');
                     ventHeure.className = "ventPrincipalHeure"
                     infoHeurePrincipal.appendChild(ventHeure);
@@ -477,15 +452,17 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     directionVentHeure.style.transform = 'rotate(' + data.hourly[i].wind_deg + 'deg)';
                     ventHeure.appendChild(directionVentHeure);
 
-
                     let ventHeureValue = document.createElement('p')
                     ventHeureValue.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h";
                     ventHeure.appendChild(ventHeureValue);
 
+                    //*ouverture info secondaire icon
                     let iconSousInfo = document.createElement('i')
                     iconSousInfo.className = "fa-solid fa-caret-down fa-xl buttonSousMenuHeure"
-                    // iconSousInfo.setAttribute('id', /*i + */"buttonSousMenuHeure");
                     infoHeurePrincipal.appendChild(iconSousInfo);
+
+
+
 
                     //*INFO DEROULANT
                     let infoHeureDeroulant = document.createElement('Article');
@@ -532,7 +509,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textTempRessentiJ.textContent = Math.round(data.hourly[i].feels_like) + "°C"
                     temperatureRessentiJour.appendChild(textTempRessentiJ);
 
-
                     //*vent
                     let ventHeureSous = document.createElement('section');
                     ventHeureSous.className = "ventMeteoHeure heureInfoBisFonce";
@@ -548,7 +524,7 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     textVentHSous.textContent = Math.round(data.hourly[i].wind_speed * 3.6) + " km/h - " + directionResultat;
                     ventHeureSous.appendChild(textVentHSous);
 
-                    //*vent rafale
+                    //*rafale de vent
                     let ventRafaleHeure = document.createElement('section');
                     ventRafaleHeure.className = "ventRafaleMeteoHeure dayInfoBisClair";
                     infoHeureDeroulant.appendChild(ventRafaleHeure);
@@ -567,71 +543,58 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     infoHeureDeroulant.appendChild(humiditeHeure);
 
                     let titleHumiditeH = document.createElement('h2');
-                    titleHumiditeH.textContent = "Humidité"
+                    titleHumiditeH.textContent = "Humidité";
                     humiditeHeure.appendChild(titleHumiditeH);
 
                     let textHumiditeH = document.createElement('p');
                     textHumiditeH.textContent = data.hourly[i].humidity + "%";
                     humiditeHeure.appendChild(textHumiditeH);
-
-
-
-
                 }
 
 
 
+                //*OUVERTURE DU SOUS MENU JOUR
                 let iconForOpenJour = document.querySelectorAll('.dayInfo');
                 for (let i = 0; i < iconForOpenJour.length; i++) {
                     let statusInfo = 0
                     iconForOpenJour[i].addEventListener("click", () => {
+                        let parentElement = iconForOpenJour[i].parentNode;//Element parent
+                        let lastChildElement = parentElement.lastChild;//Dernier element (soit le sous menu)
 
-                        let parentElement = null
-                        parentElement = iconForOpenJour[i].parentNode;
-
-                        let lastChildElement = null
-                        lastChildElement = parentElement.lastChild
-
-                        if (statusInfo == 0) {
+                        if (statusInfo == 0) {//sous menu fermé
                             iconForOpenJour[i].classList.add("infoPrincipalOpen");
+                            lastChildElement.style.display = "flex";
 
-                            lastChildElement.style.display = "flex"
-
-                            statusInfo = 1
+                            statusInfo = 1;
                         }
-                        else {
+                        else {//sous menu ouvert
                             iconForOpenJour[i].classList.remove("infoPrincipalOpen");
-
-
                             lastChildElement.style.display = "none";
+
                             statusInfo = 0;
                         }
                     });
                 }
+
+                //*OUVERTURE DU SOUS MENU HEURE
                 let iconForOpenHeure = document.querySelectorAll('.heureInfo');//resultat instantannée
                 for (let i = 0; i < iconForOpenHeure.length; i++) {
                     let statusInfo = 0
                     iconForOpenHeure[i].addEventListener("click", () => {
-                        let parentElement = null
-                        parentElement = iconForOpenHeure[i].parentNode;
+                        let parentElement = iconForOpenHeure[i].parentNode;//Element parent
+                        let lastChildElement = parentElement.lastChild;//Dernier element (soit le sous menu)
 
-
-                        let lastChildElement = null
-                        lastChildElement = parentElement.lastChild
-
-
-                        if (statusInfo == 0) {
+                        if (statusInfo == 0) {//sous menu fermé
                             iconForOpenHeure[i].classList.add("infoPrincipalOpen");
 
                             lastChildElement.style.display = "flex"
 
                             statusInfo = 1
                         }
-                        else {
+                        else {//sous menu ouvert
                             iconForOpenHeure[i].classList.remove("infoPrincipalOpen");
-
-
                             lastChildElement.style.display = "none";
+
                             statusInfo = 0;
                         }
                     });
@@ -645,13 +608,16 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
 
-fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
 
+
+//*GET POLUTIONS INFORMATIONS
+fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
     .then(res => {
         if (res.ok) {
             res.json().then(data => {
-
                 let textPolution = document.querySelector('#donneePolution');
+
+                //*Couleur et texte du cercle selon retour polution
                 let cerclePolution = document.querySelector('#cercleResultatPolution');
                 if (data.list[0].main.aqi == 1) {
                     textPolution.textContent = "Bon"
@@ -661,25 +627,21 @@ fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '
                     textPolution.textContent = "Équitable"
                     cerclePolution.style.backgroundColor = "#03FF0D"
                     cerclePolution.style.backgroundColor = "rgb(150 255 0)"
-
                 }
                 if (data.list[0].main.aqi == 3) {
                     textPolution.textContent = "Moyen"
                     cerclePolution.style.backgroundColor = "rgb(255 195 0)"
-
                 }
                 if (data.list[0].main.aqi == 4) {
                     textPolution.textContent = "Mauvais"
                     cerclePolution.style.backgroundColor = "rgb(255 124 0)"
-
-
                 }
                 if (data.list[0].main.aqi == 5) {
                     textPolution.textContent = "Très mauvais"
                     cerclePolution.style.backgroundColor = "#ff0000"
-
                 }
 
+                //*sélection
                 let co = document.querySelector('#valeurCO');
                 let nh3 = document.querySelector('#valeurNH3');
                 let no = document.querySelector('#valeurNO');
@@ -689,7 +651,7 @@ fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '
                 let pm10 = document.querySelector('#valeurPM10');
                 let so2 = document.querySelector('#valeurSO2');
 
-
+                //*écriture
                 co.textContent = data.list[0].components.co;
                 nh3.textContent = data.list[0].components.nh3;
                 no.textContent = data.list[0].components.no;
@@ -698,7 +660,6 @@ fetch('http://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + '
                 pm25.textContent = data.list[0].components.pm2_5;
                 pm10.textContent = data.list[0].components.pm10;
                 so2.textContent = data.list[0].components.so2;
-
             })
         } else {
             console.log("Coordonnées incorrecte");

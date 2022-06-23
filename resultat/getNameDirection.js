@@ -1,3 +1,5 @@
+//*RENVOIT LA DIRECTION DU VENT
+
 function getNameDirection(direction) {
     if ((direction > 348.75) && (direction <= 11.25) || (direction == 0)) {
         return "Nord";
