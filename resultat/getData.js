@@ -30,6 +30,45 @@ fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon='
         }
     })
 
+function timeToHumanTime(time) {//function for transform unixTime for sunrise, sunset, moonset, moonrise
+    let unixTimestampLever = time;
+    let millisecondsLever = unixTimestampLever * 1000;
+    let dateObjectLever = new Date(millisecondsLever);
+
+    let timeTransform = [dateObjectLever.toLocaleString("FR", { hour: "numeric" }), dateObjectLever.toLocaleString("FR", { minute: "numeric" })];
+    if (timeTransform[1] < 10) {
+        timeTransform[1] = "0" + timeTransform[1]
+    }
+    return timeTransform;
+}
+function addDaysToDate(date, days) {
+    date.setDate(date.getDate() + days)
+    return date
+}
+function getNameDay(day){
+    if (day==0){
+        return "Dim."
+    }
+    else if (day==1){
+        return "Lun."
+    }
+    else if (day==2){
+        return "Mar."
+    }
+    else if (day==3){
+        return "Mer."
+    }
+    else if (day==4){
+        return "Jeu."
+    }
+    else if (day==5){
+        return "Ven."
+    }
+    else if (day==6){
+        return "Sam."
+    }
+}
+
 //*GET METEO INFORMATIONS
 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d&units=metric&lang=fr')
     .then(res => {
@@ -111,68 +150,50 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 directionVent.style.transform = 'rotate(' + data.current.wind_deg + 'deg)';//Direction icon
 
                 let textDirection = document.querySelector('#directionVentText');
+                console.log(data.current.wind_deg)
                 let directionResultat = getNameDirection(data.current.wind_deg);//Renvoit la direction
                 textDirection.textContent = directionResultat;//Direction text
 
 
                 //*INFORMATION DU SOLEIL
                 //lever du soleil
-                const unixTimestampLever = data.current.sunrise;
-                const millisecondsLever = unixTimestampLever * 1000;
-                const dateObjectLever = new Date(millisecondsLever);
-
-                let heureLever = dateObjectLever.toLocaleString("FR", { hour: "numeric" }); // 10 AM
-                let minLever = dateObjectLever.toLocaleString("FR", { minute: "numeric" }); // 30
+                let timeResult = timeToHumanTime(data.current.sunrise)
 
                 let leverSoleilHeure = document.querySelector('#heureLeve');
-                leverSoleilHeure.textContent = heureLever;
+                leverSoleilHeure.textContent = timeResult[0];
 
                 let leverSoleilMinute = document.querySelector('#minuteLeve');
-                leverSoleilMinute.textContent = minLever;
+                leverSoleilMinute.textContent = timeResult[1];
 
                 //coucher du soleil
-                const unixTimestampCoucher = data.current.sunset;
-                const millisecondsCoucher = unixTimestampCoucher * 1000;
-                const dateObjectCoucher = new Date(millisecondsCoucher);
-
-                let heureCoucher = dateObjectCoucher.toLocaleString("FR", { hour: "numeric" }); // 10 AM
-                let minCoucher = dateObjectCoucher.toLocaleString("FR", { minute: "numeric" }); // 30
+                timeResult = timeToHumanTime(data.current.sunset)
 
                 let coucherSoleilHeure = document.querySelector('#heureCouche');
-                coucherSoleilHeure.textContent = heureCoucher;
+                coucherSoleilHeure.textContent = timeResult[0];
 
                 let coucherSoleilMinute = document.querySelector('#minuteCouche');
-                coucherSoleilMinute.textContent = minCoucher;
+                coucherSoleilMinute.textContent = timeResult[1];
 
 
                 //*INFORMATION DE LA LUNE
                 //lever de la lune
-                const unixTimestampLeverLune = data.daily[0].moonrise;
-                const millisecondsLeverLune = unixTimestampLeverLune * 1000;
-                const dateObjectLeverLune = new Date(millisecondsLeverLune);
-
-                let heureLeverLune = dateObjectLeverLune.toLocaleString("FR", { hour: "numeric" }); // 10 AM
-                let minLeverLune = dateObjectLeverLune.toLocaleString("FR", { minute: "numeric" }); // 30
+                timeResult = timeToHumanTime(data.daily[0].moonrise)
 
                 let leverLuneHeure = document.querySelector('#heureLeveLune');
-                leverLuneHeure.textContent = heureLeverLune;
+                leverLuneHeure.textContent = timeResult[0];
 
                 let leverLunelMinute = document.querySelector('#minuteLeveLune');
-                leverLunelMinute.textContent = minLeverLune;
+                leverLunelMinute.textContent = timeResult[1];
 
                 //coucher de la lune
-                const unixTimestampCoucherLune = data.daily[0].moonset;
-                const millisecondsCoucherLune = unixTimestampCoucherLune * 1000;
-                const dateObjectCoucherLune = new Date(millisecondsCoucherLune);
+                timeResult = timeToHumanTime(data.daily[0].moonset)
 
-                let heureCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { hour: "numeric" }); // 10 AM
-                let minCoucherLune = dateObjectCoucherLune.toLocaleString("FR", { minute: "numeric" }); // 30
 
                 let coucherLuneHeure = document.querySelector('#heureCoucheLune');
-                coucherLuneHeure.textContent = heureCoucherLune;
+                coucherLuneHeure.textContent = timeResult[0];
 
                 let coucherLuneMinute = document.querySelector('#minuteCoucheLune');
-                coucherLuneMinute.textContent = minCoucherLune;
+                coucherLuneMinute.textContent = timeResult[1];
 
 
 
@@ -189,8 +210,20 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     conteneurMeteoJour.appendChild(infoDayPrincipal);
 
                     //*DATE DU JOUR
+                    let date = new Date();//date du jour
+                    resultatDate = addDaysToDate(date, i)//fonction ajoute nbr de jour à date actuel
+
+                    let numDay = resultatDate.getDay();//numéro de jour dans la semaine
+                    let dayDate = resultatDate.getDate();//numéro de jour
+                    nameDay = getNameDay(numDay);
+
+                    let month = resultatDate.getMonth() + 1;//numéro de mois
+
                     let titreDay = document.createElement('h2');
-                    titreDay.textContent = (jour + i) + "/" + mois;
+                    if (month < 10) {
+                        month = "0" + month
+                    }
+                    titreDay.textContent = nameDay + " " + dayDate;
                     infoDayPrincipal.appendChild(titreDay);
 
                     //*ICON METEO
@@ -349,7 +382,8 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     leverSoleilJour.appendChild(titleLeverSoleilJ);
 
                     let textLeverSoleilJ = document.createElement('p');
-                    textLeverSoleilJ.textContent = "00h00";
+                    timeResult = timeToHumanTime(data.daily[i].sunrise)
+                    textLeverSoleilJ.textContent = timeResult[0] + " " + timeResult[1];
                     leverSoleilJour.appendChild(textLeverSoleilJ);
 
                     //*Coucher du soleil
@@ -358,11 +392,12 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     infoDayDeroulant.appendChild(CoucherSoleilJour);
 
                     let titleCoucherSoleilJ = document.createElement('h2');
-                    titleCoucherSoleilJ.textContent = "Lever du soleil";
+                    titleCoucherSoleilJ.textContent = "Coucher du soleil";
                     CoucherSoleilJour.appendChild(titleCoucherSoleilJ);
 
                     let textCoucherSoleilJ = document.createElement('p');
-                    textCoucherSoleilJ.textContent = "01h00";
+                    timeResult = timeToHumanTime(data.daily[i].sunset)
+                    textCoucherSoleilJ.textContent = timeResult[0] + " " + timeResult[1];
                     CoucherSoleilJour.appendChild(textCoucherSoleilJ);
 
                     //*lever de la Lune
@@ -375,7 +410,8 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     leverLuneJour.appendChild(titleLeverLuneJ);
 
                     let textLeverLuneJ = document.createElement('p');
-                    textLeverLuneJ.textContent = "02h00";
+                    timeResult = timeToHumanTime(data.daily[i].moonrise)
+                    textLeverLuneJ.textContent = timeResult[0] + " " + timeResult[1];
                     leverLuneJour.appendChild(textLeverLuneJ);
 
                     //*Coucher de la lune
@@ -388,7 +424,8 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     CoucherLuneJour.appendChild(titleCoucherLuneJ);
 
                     let textCoucherLuneJ = document.createElement('p');
-                    textCoucherLuneJ.textContent = "03h00";
+                    timeResult = timeToHumanTime(data.daily[i].moonset)
+                    textCoucherLuneJ.textContent = timeResult[0] + " " + timeResult[1];
                     CoucherLuneJour.appendChild(textCoucherLuneJ);
                 }
 
@@ -414,7 +451,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                     //*heure
                     let titreHeure = document.createElement('h2');
                     if (heure + i == 24 || j > 0) {
-                        titreHeure.textContent = "0" + j + " h 00";
+                        if (j > 9) {
+                            titreHeure.textContent = j + " h 00";
+
+                        }
+                        else {
+                            titreHeure.textContent = "0" + j + " h 00";
+                        }
                         j++;
                     }
                     else {
@@ -604,8 +647,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
             console.log("Coordonnées incorrecte");
         }
     })
-
-
 
 
 
