@@ -1,7 +1,6 @@
 /**FONTS & INITIALISATION*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -21,26 +20,24 @@ header {
 }
 
 header a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3em;
     height: 100%;
     width: 15%;
+
+    font-size: 1.3em;
+    text-decoration: none;
+    color: white;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    -webkit-transition: background 300ms ease-out;
-    -moz-transition: background 300ms ease-out;
-    -ms-transition: background 300ms ease-out;
-    -o-transition: background 300ms ease-out;
-    transition: background 300ms ease-out;
+    transition: all 0.3s ease-out;
 }
-
 header a:hover {
     background-color: #025095;
 }
+
+
 
 /**MAIN -- MAIN -- MAIN*/
 main {
@@ -51,7 +48,7 @@ main {
     justify-content: center;
 }
 
-.conteneurMain {
+.conteneurMain {/*Contenu principal*/
     width: 45%;
     padding: 30px 10px 10px 10px;
 
@@ -62,21 +59,19 @@ main {
     align-items: center;
 }
 
-
 h2 {
     font-size: 1em;
     font-weight: 400;
 }
 
-/**INDEX -- INDEX -- INDEX*/
-#conteneurIndex {
-    width: 45%;
-}
 
+
+/**INDEX -- INDEX -- INDEX*/
 #conteneurIndex h2 {
     margin-bottom: 90px;
 }
 
+/*bouton principal (géolocalisation, coordonnéee précise)*/
 #buttonTypeLocalisation,
 #formulaireCoordonneGeo {
     display: flex;
@@ -102,11 +97,10 @@ h2 {
 
     cursor: pointer;
 
-    -webkit-transition: background 300ms ease-out;
-    -moz-transition: background 300ms ease-out;
-    -ms-transition: background 300ms ease-out;
-    -o-transition: background 300ms ease-out;
-    transition: background 300ms ease-out;
+    transition: all 0.3s ease-out;
+}
+.buttonIndex:hover{
+    border-color: #2c68e0;
 }
 
 #geolocalisationButton {
@@ -117,18 +111,8 @@ h2 {
 #geolocalisationButton:hover {
     background-color: #2c68e0;
 }
-.buttonIndex:hover{
-    border-color: #2c68e0;
-}
 
 /**FORMULAIRE COORDONNÉES*/
-#latitude,
-#longitude {
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-}
-
 #formulaireCoordonneGeo {
     display: none;
 }
@@ -143,10 +127,17 @@ h2 {
     border-color: #4C7CDA;
     border-width: 2px;
 }
-
 #formulaireCoordonneGeo input:focus {
     outline: none !important;
     box-shadow: 0 0 3px #4C7CDA;
+}
+
+#latitude,
+#longitude {
+    display: flex;
+    flex-direction: column;
+
+    width: 27%;
 }
 
 #validationForm {
@@ -164,13 +155,13 @@ h2 {
     border-color: #4C7CDA;
 
     background-color: #55FF5A;
+
     color: #4C7CDA;
+    font-weight: 900;
 
     padding: 0px 32px;
 
     cursor: pointer;
-
-    font-weight: 900;
 }
 
 
@@ -178,12 +169,12 @@ h2 {
 /**FOOTER -- FOOTER -- FOOTER*/
 footer{
     height: 7vh;
-    background-color: #115592;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
+    background-color: #115592;
     color: white;
 }
 .lineFooter{
