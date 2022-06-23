@@ -4,6 +4,24 @@
     text-align: center;
 }
 
+h1 {
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+.majuscule {
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.grosTitre {
+    font-size: 1.3em;
+    text-transform: uppercase;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+/**TOP INFO METEO*/
 #topMeteoTitre {
     height: 10vh;
     width: 100%;
@@ -26,22 +44,17 @@
 #topMeteoTitre h1,
 #topMeteoTitre h2 {
     margin-left: 30px;
-
 }
 
-h1 {
-    text-transform: uppercase;
-    font-size: 2em;
-
-}
-
+/*Bouton favori*/
 #villeFavoriButton {
     width: 55px;
     height: 55px;
-    background: #115592;
     margin: 0 20px;
     padding: 5px;
     border-radius: 8px;
+
+    background: #115592;
 
     font-size: 0.9em;
     font-weight: 700;
@@ -64,17 +77,8 @@ h1 {
     width: 20px;
 }
 
-.majuscule {
-    text-transform: uppercase;
-    margin-top: 15px;
-}
 
-.grosTitre {
-    font-size: 1.3em;
-    text-transform: uppercase;
-    margin: 20px 0;
-    font-weight: 700;
-}
+
 
 #contenuInfoPrincipal,
 #contenuPollution,
@@ -88,6 +92,7 @@ h1 {
 #typeDonneMeteo {
     width: 100%;
     height: 5.5vh;
+
     background-color: #135EA4;
 
     display: flex;
@@ -116,7 +121,7 @@ h1 {
 .rightSeparation {
     border-right: solid;
     border-width: 1px;
-    border-color:#2577BB
+    border-color: #2577BB
 }
 
 /**INFORMATIONS PRINCIPALES*/
@@ -134,6 +139,7 @@ h1 {
     align-items: center;
 }
 
+/*cercle donnee meteo*/
 #cercleDonneeMeteo {
     width: 220px;
     height: 220px;
@@ -167,6 +173,7 @@ h1 {
     margin: 8px 0;
 }
 
+/*Information météo secondaire*/
 #informationsSecondairePrincipalResultat {
     width: 49%;
     display: flex;
@@ -257,13 +264,14 @@ h1 {
 }
 
 #contenuSoleil,
-#contenuLune,#contenuInfoJours,#contenuInfoHeures {
+#contenuLune,
+#contenuInfoJours,
+#contenuInfoHeures {
     margin: 0 0 9px 0;
 }
 
 
-
-/**POLUTION -- POLUUTION -- POLUTION */
+/**POLUTION -- POLUTION -- POLUTION */
 #contenuPollution {
     margin-bottom: 100px;
 }
@@ -271,8 +279,6 @@ h1 {
 #cercleResultatPolution {
     width: 110px;
     height: 110px;
-    background-color: #03FF0D;
-    /*orange: #ffab00, rouge : #ff0000*/
     border-radius: 90%;
 
     display: flex;
@@ -298,29 +304,29 @@ h1 {
 }
 
 #valeurDesDonnes #informationComplementaire {
+    width: 100%;
+    margin-top: 10px;
+
     font-size: 0.8em;
     font-style: italic;
 }
 
 
 
-#valeurDesDonnes #informationComplementaire {
-    width: 100%;
-    margin-top: 10px;
-}
 
 
+/**JOUR/HEURE -- JOUR/HEURE -- JOUR/HEURE */
 
-
-
-#contenuInfoJours,#contenuInfoHeures {
+#contenuInfoJours,
+#contenuInfoHeures {
     display: none;
     flex-direction: column;
 
     width: 100%;
 }
 
-.dayInfo,.heureInfo {
+.dayInfo,
+.heureInfo {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -328,7 +334,7 @@ h1 {
     height: 95px;
     font-size: 1.1em;
     padding: 0 15px;
-    
+
     border-bottom: solid;
     border-width: 1px;
     border-color: #115592;
@@ -337,30 +343,39 @@ h1 {
 
     transition: all 0.3s ease-out;
 }
-.dayInfo:hover,.heureInfo:hover {
-    background-color: #115592;
-}
-.infoPrincipalOpen{
+
+.dayInfo:hover,
+.heureInfo:hover {
     background-color: #115592;
 }
 
-.dayInfo i,.heureInfo i {
+.infoPrincipalOpen {
+    background-color: #115592;
+}
+
+.dayInfo i,
+.heureInfo i {
     cursor: pointer;
 }
 
-.contenuPrincipalJour .iconMeteoJour,.contenuInfoHeures .iconMeteoHeure {
+.contenuPrincipalJour .iconMeteoJour,
+.contenuInfoHeures .iconMeteoHeure {
     width: 35px;
 }
 
-.dayInfo h2, .heureInfo h2 {
+.dayInfo h2,
+.heureInfo h2 {
     font-size: 1.2em;
     font-weight: 700;
 }
 
-.dayInfo img,.heureInfo img {
+.dayInfo img,
+.heureInfo img {
     width: 35px;
 }
-.ventPrincipalJour p, .ventPrincipalHeure p{
+
+.ventPrincipalJour p,
+.ventPrincipalHeure p {
     margin-left: 10px;
 }
 
@@ -372,54 +387,64 @@ h1 {
     color: #F5C47A;
 }
 
-.ventPrincipalJour, .ventPrincipalHeure {
+.ventPrincipalJour,
+.ventPrincipalHeure {
     display: flex;
 }
 
-.ventPrincipalJour img,.ventPrincipalHeure img {
+.ventPrincipalJour img,
+.ventPrincipalHeure img {
     width: 15px;
 }
 
-.rafaleVentJour, .ragaleVentHeure {
+.rafaleVentJour,
+.ragaleVentHeure {
     font-size: 0.9em;
     font-weight: 300;
 }
 
-.humiditeJour, .humiditeHeure {
+.humiditeJour,
+.humiditeHeure {
     display: flex;
     align-items: center;
 }
 
 
 
-/**Informations bis meteo jour */
-.dayInfoBis, .heureInfoBis {
+/**Informations bis meteo jour/heure */
+.dayInfoBis,
+.heureInfoBis {
     display: none;
     flex-direction: column;
 }
 
-.dayInfoBis section, .heureInfoBis section {
+.dayInfoBis section,
+.heureInfoBis section {
     display: flex;
     align-items: center;
     padding: 0 35px;
     height: 60px;
 }
 
-.dayInfoBis section h2, .heureInfoBis section h2 {
+.dayInfoBis section h2,
+.heureInfoBis section h2 {
     width: 50%;
     text-align: left;
     font-weight: 400;
     color: #75d6ff;
 }
 
-.dayInfoBis section p, .heureInfoBis section p {
+.dayInfoBis section p,
+.heureInfoBis section p {
     font-weight: 600;
 }
 
-.dayInfoBisClair, .heureInfoBisClair {
+.dayInfoBisClair,
+.heureInfoBisClair {
     background-color: #135EA4;
 }
 
-.dayInfoBisFonce, .heureInfoBisFonce {
+.dayInfoBisFonce,
+.heureInfoBisFonce {
     background-color: #115592;
 }
