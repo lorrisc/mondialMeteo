@@ -16,8 +16,6 @@
 
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/facfbfe3cd.js" crossorigin="anonymous"></script>
-
-    <!--FAVICON-->
 </head>
 
 <body>
@@ -25,53 +23,65 @@
         <a href="../index.html">Accueil météo</a>
     </header>
 
-
-
     <main>
         <section id="conteneurResultat" class="conteneurMain">
+
+            <!--*Ville utilisateur/régions/boutton favori-->
             <section id="topMeteoTitre">
                 <div id="textTopMeteo">
                     <h1>météo <span class="ville"></span></h1>
                     <h2 id="regions"></h2>
                 </div>
+
                 <div id="villeFavoriButton">
                     <img src="../assets/starBorderEpais.png " alt="icon etoile favori">
                     <p>Favoris</p>
                 </div>
             </section>
+
+            <!--*Navbar type donnée (now/hourly/daily)-->
             <nav id="typeDonneMeteo">
                 <div id="buttonInstant" class="textNavDonneMeteo rightSeparation isOpen">
                     <p>Instantané</p>
                 </div>
+
                 <div id="buttonHeures" class="textNavDonneMeteo rightSeparation">
                     <p>12 heures</p>
                 </div>
+
                 <div id="buttonJours" class="textNavDonneMeteo">
                     <p>7 jours</p>
                 </div>
             </nav>
+
             <section id="contenuInfoPrincipal">
                 <h2 class="majuscule">météo instantané - <span id="jourDate"></span>/<span id="moisDate"></span>/<span
                         id="anneeDate"></span> - <span id="heureDate"></span> : <span id="minuteDate"></span></h2>
                 <div id="contenuInfoPrincipalDonnee">
+
+                    <!--*Cercle info principal-->
                     <article id="cercleDonneeMeteo">
                         <img src="" alt="Icon meteo instantané">
                         <p id="descriptionMeteo"></p>
                         <div id="cercleSeparation"></div>
                         <p id="temperatureCercle"><span id="donneeTemperatureCercle"></span>°C</p>
                     </article>
+
+                    <!--*Info secondaire-->
                     <article id="informationsSecondairePrincipalResultat">
+
+                        <!--*Température ressenti-->
                         <article id="tempRessentie">
                             <div class="imgInfoSecondaire">
                                 <img src="../assets/infoSecondaire/thermometre.png" alt="icon thermometre">
-
                             </div>
                             <div class="textInfoSecondaire">
                                 <h2>Ressenti</h2>
                                 <p id="tempRessentieValeur"><span id="tempRessentieDonnee"></span>°C</p>
                             </div>
-
                         </article>
+
+                        <!--*Humidité-->
                         <article id="humidite">
                             <div class="imgInfoSecondaire">
                                 <img src="../assets/infoSecondaire/goutteCouleur.png" alt="icon thermometre">
@@ -81,6 +91,8 @@
                                 <p id="humiditeValeur"><span id="humiditeDonnee"></span>%</p>
                             </div>
                         </article>
+
+                        <!--*Vent-->
                         <article id="vent">
                             <div class="imgInfoSecondaire">
                                 <img src="../assets/infoSecondaire/directionVent.png" alt="direction vent">
@@ -90,6 +102,8 @@
                                 <p id="ventValeur"><span id="ventDonnee"></span> km/h</p>
                             </div>
                         </article>
+
+                        <!--*Visibilité-->
                         <article id="visiblite">
                             <div class="imgInfoSecondaire">
                                 <img src="../assets/infoSecondaire/oeilCouleur.png" alt="icon oeil">
@@ -99,28 +113,40 @@
                                 <p id="visibiliteValeur"><span id="visibiliteDonnee"></span> km</p>
                             </div>
                         </article>
+
                     </article>
                 </div>
             </section>
+
+            <!--*Info soleil-->
             <section id="contenuSoleil">
+
                 <h2 class="grosTitre">lever du soleil / coucher du soleil</h2>
-                <img src="../assets/sunrise.png" alt="">
+                <img src="../assets/sunrise.png" alt="icon lever du soleil">
+
                 <article id="leverSoleil">
                     <h2>Lever du soleil</h2>
                     <p><span id="heureLeve"></span> <span id="minuteLeve"></span></p>
                 </article>
+
                 <article id="coucherSoleil">
                     <h2>Coucher du soleil</h2>
                     <p><span id="heureCouche"></span> <span id="minuteCouche"></span></p>
                 </article>
+
             </section>
+
+            <!--*Info lune-->
             <section id="contenuLune">
+
                 <h2 class="grosTitre">lever de la lune / coucher de la lune</h2>
-                <img src="../assets/lune.png" alt="">
+                <img src="../assets/lune.png" alt="image de la lune">
+
                 <article id="leverLune">
                     <h2>Lever de la Lune</h2>
                     <p><span id="heureLeveLune"></span> <span id="minuteLeveLune"></span></p>
                 </article>
+
                 <article id="coucherLune">
                     <h2>Coucher de la lune</h2>
                     <p><span id="heureCoucheLune"></span> <span id="minuteCoucheLune"></span></p>
@@ -128,18 +154,22 @@
 
             </section>
 
+            <!--* JS : Info jour-->
             <section id="contenuInfoJours">
-
             </section>
+            <!--* JS : Info heures-->
             <section id="contenuInfoHeures">
-
             </section>
 
+            <!--*Info pollution-->
             <section id="contenuPollution">
+
                 <h2 class="grosTitre">polution de l'air à <span class="ville"></span></h2>
+
                 <div id="cercleResultatPolution">
                     <p id="donneePolution"></p>
                 </div>
+
                 <div id="valeurDesDonnes">
                     <p>Monoxyde de carbone : <span id="valeurCO"></span></p>
                     <p>Monoxyde d'azote : <span id="valeurNO"></span></p>
@@ -149,18 +179,15 @@
                     <p>Particule fine (&#x3C; 2,5 µm) : <span id="valeurPM25"></span></p>
                     <p>Particule &#x3C; 10 µm : <span id="valeurPM10"></span></p>
                     <p>Ammoniac : <span id="valeurNH3"></span></p>
+
                     <p id="informationComplementaire">Np: les valeurs ci-dessus représente la concentration actuelle des
                         gaz polluants. L'indice de pollution est calculé en fonction du dioxyde d'azote, des particules
                         PM10 ainsi que de l'ozone.</p>
                 </div>
+
             </section>
 
-
-
-
         </section>
-
-
 
     </main>
 
@@ -175,7 +202,6 @@
     <script src="getData.js"></script>
     <script src="getNameDirection.js"></script>
     <script src="switchResultat.js"></script>
-    <!--Recuperation via API donnée météo-->
 
 </body>
 
