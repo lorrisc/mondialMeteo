@@ -2,7 +2,9 @@
 let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
-let informationCity=[]
+let informationCity = []
+
+
 
 //*GET CITY OF USER
 fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
@@ -25,9 +27,10 @@ fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon='
                     //Région de l'utilisateur
                     let regionUser = data[0].state;
                     regionRecherche.textContent = regionUser;
-    
+
                     //stock data pour favori local storage
                     informationCity = [villeUser, latitude, longitude]
+                    histo()
                 }
             })
         } else {
@@ -73,6 +76,8 @@ function getNameDay(day) {
         return "Sam."
     }
 }
+
+
 
 //*GET METEO INFORMATIONS
 fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d&units=metric&lang=fr')
@@ -611,13 +616,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                             iconForOpenJour[i].classList.add("infoPrincipalOpen");
 
                             let childSectionElement = lastChildElement.childNodes;
-                            for (let i = 0; i < childSectionElement.length; i++){
-                                childSectionElement[i].style.visibility="visible";
-                                childSectionElement[i].style.height="60px";
+                            for (let i = 0; i < childSectionElement.length; i++) {
+                                childSectionElement[i].style.visibility = "visible";
+                                childSectionElement[i].style.height = "60px";
                             }
 
                             ouvertureFermetureButton = iconForOpenJour[i].lastChild
-                            ouvertureFermetureButton.style.transform="rotate(-180deg)"
+                            ouvertureFermetureButton.style.transform = "rotate(-180deg)"
 
                             statusInfo = 1;
                         }
@@ -625,13 +630,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                             iconForOpenJour[i].classList.remove("infoPrincipalOpen");
 
                             let childSectionElement = lastChildElement.childNodes;
-                            for (let i = 0; i < childSectionElement.length; i++){
-                                childSectionElement[i].style.height="0px";
-                                childSectionElement[i].style.visibility="hidden";
+                            for (let i = 0; i < childSectionElement.length; i++) {
+                                childSectionElement[i].style.height = "0px";
+                                childSectionElement[i].style.visibility = "hidden";
                             }
 
                             ouvertureFermetureButton = iconForOpenJour[i].lastChild
-                            ouvertureFermetureButton.style.transform="rotate(0deg)"
+                            ouvertureFermetureButton.style.transform = "rotate(0deg)"
 
                             statusInfo = 0;
                         }
@@ -650,13 +655,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                             iconForOpenHeure[i].classList.add("infoPrincipalOpen");
 
                             let childSectionElement = lastChildElement.childNodes;
-                            for (let i = 0; i < childSectionElement.length; i++){
-                                childSectionElement[i].style.visibility="visible";
-                                childSectionElement[i].style.height="60px";
+                            for (let i = 0; i < childSectionElement.length; i++) {
+                                childSectionElement[i].style.visibility = "visible";
+                                childSectionElement[i].style.height = "60px";
                             }
 
                             ouvertureFermetureButton = iconForOpenHeure[i].lastChild
-                            ouvertureFermetureButton.style.transform="rotate(-180deg)"
+                            ouvertureFermetureButton.style.transform = "rotate(-180deg)"
 
                             statusInfo = 1;
                         }
@@ -664,13 +669,13 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                             iconForOpenHeure[i].classList.remove("infoPrincipalOpen");
 
                             let childSectionElement = lastChildElement.childNodes;
-                            for (let i = 0; i < childSectionElement.length; i++){
-                                childSectionElement[i].style.height="0px";
-                                childSectionElement[i].style.visibility="hidden";
+                            for (let i = 0; i < childSectionElement.length; i++) {
+                                childSectionElement[i].style.height = "0px";
+                                childSectionElement[i].style.visibility = "hidden";
                             }
 
                             ouvertureFermetureButton = iconForOpenHeure[i].lastChild
-                            ouvertureFermetureButton.style.transform="rotate(0deg)"
+                            ouvertureFermetureButton.style.transform = "rotate(0deg)"
 
                             statusInfo = 0;
                         }

@@ -2,8 +2,6 @@
 
 let addCityToFav = document.querySelector('#villeFavoriButton');//boutton add favori
 
-let cityFav = [];
-
 addCityToFav.addEventListener("click", () => {
 
     let LSelement = localStorage.getItem("villeFav");//*recuperation local storage
