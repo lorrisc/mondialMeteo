@@ -11,7 +11,7 @@ iconSearch.addEventListener("click", () => {
         let firstBarre = document.querySelector("#firstBarre");
         let secondBarre = document.querySelector("#secondBarre");
 
-        iconSearch.style.right="-20px";
+        iconSearch.style.right="-25px";
 
         setTimeout(() => {  closeIcon.style.visibility="visible"; }, 100);
         
@@ -33,7 +33,7 @@ closeIcon.addEventListener("click", () => {
         
         closeIcon.style.visibility="hidden";
                 
-        setTimeout(() => {  iconSearch.style.right="20px"; }, 200);
+        setTimeout(() => {  iconSearch.style.right="25px"; }, 200);
         
 
 })
