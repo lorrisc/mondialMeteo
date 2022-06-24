@@ -15,9 +15,10 @@ iconSearch.addEventListener("click", () => {
 
         setTimeout(() => {  closeIcon.style.visibility="visible"; }, 100);
         
-
+        
         firstBarre.style.transform="rotate(45deg)";
         secondBarre.style.transform="rotate(-45deg)";
+        setTimeout(() => {  iconSearch.style.display="none"; }, 100);
 
 })
 closeIcon.addEventListener("click", () => {
@@ -27,7 +28,7 @@ closeIcon.addEventListener("click", () => {
         let firstBarre = document.querySelector("#firstBarre");
         let secondBarre = document.querySelector("#secondBarre");
 
-        
+        iconSearch.style.display="block";
         firstBarre.style.transform="rotate(0deg)";
         secondBarre.style.transform="rotate(0deg)";
         
