@@ -96,6 +96,24 @@ header input:focus {
     background-color: rgb(235, 235, 235);
 }
 
+#closeIcon {
+    visibility: hidden;
+}
+
+#firstBarre,
+#secondBarre {
+    width: 29px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+
+    right: 20px;
+
+    transition: all 0.3s ease-out;
+
+}
+
+
 
 
 /**MAIN -- MAIN -- MAIN*/
@@ -394,6 +412,7 @@ footer p {
     #buttonTypeLocalisation {
         width: 100%;
     }
+
     .conteneurMain {
         padding: 30px 20px 10px 20px;
     }
@@ -401,18 +420,26 @@ footer p {
     #textLoc {
         margin: 0 0px 50px 0px;
     }
-    header{
+
+    header {
         justify-content: space-between;
         padding: 0 20px;
     }
-    header input{
-        display: none;
+
+    header input {
+        width: 0px;
+        visibility: hidden;
+        transition: all 0.4s ease 0s;
     }
-    #searchIcon{
+
+    #searchIcon {
         display: block;
-        margin-left: auto;
+        position: absolute;
+        right: 20px;
+        transition: all 0.2s ease-out;
+
     }
-    header input,
+
     #resultatSearch {
         width: 75vw;
     }
@@ -422,10 +449,12 @@ footer p {
     .conteneurMain {
         padding: 30px 15px 10px 15px;
     }
+
     #textLoc {
         margin: 0 0px 50px 0px;
     }
-    header{
+
+    header {
         padding: 0 15px;
     }
 }
