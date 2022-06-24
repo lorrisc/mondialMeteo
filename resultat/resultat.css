@@ -44,7 +44,7 @@ h1 {
     top: 0;
     left: 0;
     width: 100vw;
-    height:100vh;
+    height: 100vh;
     /* background-color: #efe9f4; */
     background: linear-gradient(180deg, #2476bb, #38a2f0);
     opacity: 0%;
@@ -360,6 +360,11 @@ h1 {
     width: 100%;
 }
 
+#contenuInfoJours p,
+#contenuInfoHeures p {
+    text-align: left;
+}
+
 .dayInfo,
 .heureInfo {
     display: flex;
@@ -603,11 +608,17 @@ h1 {
     .ventPrincipalJour img {
         display: none;
     }
-}
 
-@media screen and (max-width: 350px) {
+    .dayInfoBis section h2,
+    .heureInfoBis section h2 {
+        width: auto;
+        margin-right: 35px;
+    }
 
-    .ventPrincipalHeure img {
-        display: none;
+    @media screen and (max-width: 350px) {
+
+        .ventPrincipalHeure img {
+            display: none;
+        }
     }
 }

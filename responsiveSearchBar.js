@@ -2,6 +2,7 @@ let iconSearch = document.querySelector("#searchIcon")
 let closeIcon = document.querySelector("#closeIcon");
 iconSearch.style.zIndex = "100";
 
+let bgForSearch = document.querySelector("#bgForSearch");
 
 iconSearch.addEventListener("click", () => {
         //*search bar
@@ -57,8 +58,9 @@ iconSearch.addEventListener("click", () => {
 
 
 })
-closeIcon.addEventListener("click", () => {
 
+//*Fonction cancel la search bar
+function closeSearch() {
         searchBar.style.width = "0vw";
         searchBar.style.visibility = "hidden";
 
@@ -78,6 +80,11 @@ closeIcon.addEventListener("click", () => {
                 bgForSearch.style.opacity = "0%";
                 setTimeout(() => { bgForSearch.style.display = "none"; }, 600);
         }
+}
 
-
+closeIcon.addEventListener("click", () => {
+        closeSearch();
+})
+bgForSearch.addEventListener("click", () => {
+        closeSearch();
 })

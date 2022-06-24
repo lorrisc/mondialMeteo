@@ -376,7 +376,9 @@ footer p {
 }
 
 @media screen and (max-width: 700px) {
-    #buttonTypeLocalisation {
+
+    #buttonTypeLocalisation,
+    #formulaireCoordonneGeo {
         flex-direction: column;
         width: 60%;
     }
@@ -386,10 +388,28 @@ footer p {
 
         text-align: center;
     }
+
+    #buttonTypeLocalisation {
+        margin-bottom: 30px;
+    }
+
+    #validationForm {
+        width: 99%;
+        padding: 0;
+        margin-top: 25px;
+        align-self: center;
+    }
+
+    #latitude,
+    #longitude {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 650px) {
-    #buttonTypeLocalisation {
+
+    #buttonTypeLocalisation,
+    #formulaireCoordonneGeo {
         flex-direction: column;
         width: 65%;
     }
@@ -401,7 +421,9 @@ footer p {
 }
 
 @media screen and (max-width: 600px) {
-    #buttonTypeLocalisation {
+
+    #buttonTypeLocalisation,
+    #formulaireCoordonneGeo {
         width: 70%;
     }
 
@@ -411,7 +433,9 @@ footer p {
 }
 
 @media screen and (max-width: 426px) {
-    #buttonTypeLocalisation {
+
+    #buttonTypeLocalisation,
+    #formulaireCoordonneGeo {
         width: 100%;
     }
 
@@ -445,6 +469,8 @@ footer p {
     #resultatSearch {
         width: 75vw;
     }
+
+
 }
 
 @media screen and (max-width: 376px) {
