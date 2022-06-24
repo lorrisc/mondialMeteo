@@ -7,10 +7,10 @@ searchBar.addEventListener("keyup", (e) => {
         method: 'GET',
     };
 
-    fetch("https://api.geoapify.com/v1/geocode/search?text=" + searchLetters + "+&limit=5&format=json&apiKey=ee84ddcca7f946beba0cafae046d7ab3", requestOptions)
+    fetch("https://api.geoapify.com/v1/geocode/search?text=" + searchLetters + "+&limit=10&&type=city&format=json&apiKey=ee84ddcca7f946beba0cafae046d7ab3", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
+            // console.log(result);
 
             let searchResult = document.querySelector("#resultatSearch")
 
@@ -24,7 +24,6 @@ searchBar.addEventListener("keyup", (e) => {
 
             for (i = 0; i < result.results.length; i++) {
                 let nouveauResultat = tablResultat.push([result.results[i].city, result.results[i].postcode, result.results[i].county, result.results[i].lat, result.results[i].lon])
-                console.log(tablResultat)
 
                 searchResult.style.display = "flex";
 
@@ -50,6 +49,11 @@ searchBar.addEventListener("keyup", (e) => {
                     location = "resultat/resultat.html";//affichage page résultat
                 })
             }
+
+            document.body.addEventListener("click",()=>{
+                searchResult.style.display="none"
+            })
+
 
         })
 
