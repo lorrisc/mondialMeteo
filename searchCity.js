@@ -14,7 +14,7 @@ searchBar.addEventListener("keyup", (e) => {
     fetch("https://api.geoapify.com/v1/geocode/search?text=" + searchLetters + "+&limit=10&&type=city&format=json&apiKey=ee84ddcca7f946beba0cafae046d7ab3", requestOptions)
         .then(response => response.json())
         .then(result => {
-            // console.log(result);
+            console.log(result);
 
             let searchResult = document.querySelector("#resultatSearch");//conteneur résultats search bar
 
