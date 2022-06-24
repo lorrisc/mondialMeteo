@@ -274,7 +274,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
 
 
-
                     //*INFO DEROULANT
                     let infoDayDeroulant = document.createElement('Article');
                     infoDayDeroulant.className = "dayInfoBis";
@@ -606,13 +605,28 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                         if (statusInfo == 0) {//sous menu fermé
                             iconForOpenJour[i].classList.add("infoPrincipalOpen");
-                            lastChildElement.style.display = "flex";
+                            // lastChildElement.style.display = "flex";
+                            lastChildElement.style.visibility = "visible";
+
+                            lastChildElement.style.height = "660px";
+                            lastChildElement.style.width = "auto";
+
+                            ouvertureFermetureButton = iconForOpenJour[i].lastChild
+                            ouvertureFermetureButton.style.transform="rotate(-180deg)"
 
                             statusInfo = 1;
                         }
                         else {//sous menu ouvert
                             iconForOpenJour[i].classList.remove("infoPrincipalOpen");
-                            lastChildElement.style.display = "none";
+                            // lastChildElement.style.display = "none";
+
+                            lastChildElement.style.height = "0px";
+
+                            lastChildElement.style.visibility = "hidden";
+
+
+                            ouvertureFermetureButton = iconForOpenJour[i].lastChild
+                            ouvertureFermetureButton.style.transform="rotate(0deg)"
 
                             statusInfo = 0;
                         }
@@ -630,13 +644,26 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         if (statusInfo == 0) {//sous menu fermé
                             iconForOpenHeure[i].classList.add("infoPrincipalOpen");
 
-                            lastChildElement.style.display = "flex";
+                            // lastChildElement.style.display = "flex";
+                            lastChildElement.style.visibility = "visible";
+
+                            lastChildElement.style.height = "360px";
+                            lastChildElement.style.width = "auto";
+
+                            ouvertureFermetureButton = iconForOpenHeure[i].lastChild
+                            ouvertureFermetureButton.style.transform="rotate(-180deg)"
 
                             statusInfo = 1;
                         }
                         else {//sous menu ouvert
                             iconForOpenHeure[i].classList.remove("infoPrincipalOpen");
-                            lastChildElement.style.display = "none";
+                            // lastChildElement.style.display = "none";
+                            lastChildElement.style.height = "0";
+                            lastChildElement.style.visibility = "hidden";
+
+
+                            ouvertureFermetureButton = iconForOpenHeure[i].lastChild
+                            ouvertureFermetureButton.style.transform="rotate(0deg)"
 
                             statusInfo = 0;
                         }

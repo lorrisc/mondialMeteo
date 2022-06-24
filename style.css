@@ -90,7 +90,7 @@ header input:focus{
 
 /**MAIN -- MAIN -- MAIN*/
 main {
-    min-height: 86vh;
+    min-height: 83vh;
     background-color: #efe9f4;
 
     display: flex;

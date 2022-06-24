@@ -368,6 +368,7 @@ h1 {
 .dayInfo i,
 .heureInfo i {
     cursor: pointer;
+    transition: all 0.3s ease-out, transform 300ms;
 }
 
 .contenuPrincipalJour .iconMeteoJour,
@@ -426,8 +427,14 @@ h1 {
 /**Informations bis meteo jour/heure */
 .dayInfoBis,
 .heureInfoBis {
-    display: none;
+    /* display: none; */
+    display: flex;
+    visibility: hidden;
+    height: 0px;
     flex-direction: column;
+
+    transition: all 0.5s ease 0s;
+
 }
 
 .dayInfoBis section,
