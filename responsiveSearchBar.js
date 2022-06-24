@@ -24,7 +24,7 @@ iconSearch.addEventListener("click", () => {
                 setTimeout(() => { iconSearch.style.display = "none"; }, 100);
         }
         else {
-                bgForSearch.style.display="block"
+                bgForSearch.style.opacity="90%"
                 searchBar.style.position = "absolute";
                 searchBar.style.top = "80px";
                 searchBar.style.left = "20px";
@@ -50,21 +50,22 @@ iconSearch.addEventListener("click", () => {
 
 })
 closeIcon.addEventListener("click", () => {
-        bgForSearch.style.display="none";
-
+        
         searchBar.style.width = "0vw";
         searchBar.style.visibility = "hidden";
-
+        
         let firstBarre = document.querySelector("#firstBarre");
         let secondBarre = document.querySelector("#secondBarre");
-
+        
         iconSearch.style.display = "block";
         firstBarre.style.transform = "rotate(0deg)";
         secondBarre.style.transform = "rotate(0deg)";
-
+        
         closeIcon.style.visibility = "hidden";
-
+        
         setTimeout(() => { iconSearch.style.right = "25px"; }, 200);
+        
+        bgForSearch.style.opacity="0%"
 
 
 })
