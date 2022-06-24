@@ -33,12 +33,13 @@ header a {
 
     transition: all 0.3s ease-out;
 }
+
 header a:hover {
     background-color: #025095;
 }
 
 
-header input{
+header input {
     width: 25%;
     height: 40px;
     padding: 0 5px;
@@ -47,11 +48,13 @@ header input{
 
     border: none;
 }
-header input:focus{
+
+header input:focus {
 
     outline: none !important;
 }
-#resultatSearch{
+
+#resultatSearch {
     position: absolute;
     display: none;
     flex-direction: column;
@@ -61,12 +64,13 @@ header input:focus{
 
     background-color: white;
     width: 25%;
-    padding:  5px 5px;
+    padding: 5px 5px;
 
     border: solid;
     border-width: 2px;
 }
-#resultatSearch div{
+
+#resultatSearch div {
     border-bottom: solid;
     border-width: 1px;
 
@@ -82,7 +86,8 @@ header input:focus{
     transition: background 0.3s ease-out;
 
 }
-#resultatSearch div:hover{
+
+#resultatSearch div:hover {
     background-color: rgb(235, 235, 235);
 }
 
@@ -97,7 +102,8 @@ main {
     justify-content: center;
 }
 
-.conteneurMain {/*Contenu principal*/
+.conteneurMain {
+    /*Contenu principal*/
     width: 45%;
     padding: 30px 10px 10px 10px;
 
@@ -150,7 +156,8 @@ h2 {
 
     transition: all 0.3s ease-out;
 }
-.buttonIndex:hover{
+
+.buttonIndex:hover {
     border-color: #2c68e0;
 }
 
@@ -159,6 +166,7 @@ h2 {
     color: white;
     text-decoration: none;
 }
+
 #geolocalisationButton:hover {
     background-color: #2c68e0;
 }
@@ -178,6 +186,7 @@ h2 {
     border-color: #4C7CDA;
     border-width: 2px;
 }
+
 #formulaireCoordonneGeo input:focus {
     outline: none !important;
     box-shadow: 0 0 3px #4C7CDA;
@@ -218,21 +227,170 @@ h2 {
 
 
 /**FOOTER -- FOOTER -- FOOTER*/
-footer{
+footer {
     height: 7vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     background-color: #115592;
     color: white;
 }
-.lineFooter{
+
+.lineFooter {
     width: 13%;
     height: 1px;
     background-color: white;
 }
+
 footer p {
     margin: 0 20px;
+}
+
+
+
+
+
+
+
+/**RESPONSIVE -- RESPONSIVE*/
+
+@media screen and (max-width: 1500px) {
+    .conteneurMain {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .conteneurMain {
+        width: 56.25%;
+    }
+
+    header input {
+        width: 29.375%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .conteneurMain {
+        width: 62.5%;
+    }
+
+    header input {
+        width: 33.75%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .conteneurMain {
+        width: 68.75%;
+    }
+
+    header input {
+        width: 38.125%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .conteneurMain {
+        width: 75%;
+    }
+
+    header input {
+        width: 42.5%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .conteneurMain {
+        width: 81.25%;
+    }
+
+    header input {
+        width: 46.875%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .conteneurMain {
+        width: 87.5%;
+    }
+
+    header input {
+        width: 51.25%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .conteneurMain {
+        width: 93.75%;
+    }
+
+    header input {
+        width: 55.625%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .conteneurMain {
+        width: 100%;
+    }
+
+    header input {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #buttonTypeLocalisation {
+        flex-direction: column;
+        width: 60%;
+    }
+
+    #buttonTypeLocalisation div {
+        margin: 0px 0 30px 0;
+
+        text-align: center;
+    }
+}
+@media screen and (max-width: 650px) {
+    #buttonTypeLocalisation {
+        flex-direction: column;
+        width: 65%;
+    }
+
+    #textLoc {
+        text-align: justify;
+        margin: 0 40px 50px 40px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #buttonTypeLocalisation {
+        width: 70%;
+    }
+
+    #textLoc {
+        margin: 0 20px 50px 20px;
+    }
+}
+@media screen and (max-width: 426px) {
+    #buttonTypeLocalisation {
+        width: 90%;
+    }
+
+    #textLoc {
+        margin: 0 0px 50px 0px;
+        width: 90%;
+    }
+}
+@media screen and (max-width: 376px) {
+    #buttonTypeLocalisation {
+        width: 96%;
+    }
+
+    #textLoc {
+        margin: 0 0px 50px 0px;
+        width: 96%;
+    }
 }
