@@ -57,7 +57,13 @@ searchBar.addEventListener("keyup", (e) => {
                     sessionStorage.setItem('latitudeUser', latitude);
                     sessionStorage.setItem('longitudeUser', longitude);
 
-                    location = "resultat/resultat.html";//*affichage page résultat
+                    //sur quelle page est l'utilisateur?
+                    if (window.location.href.includes('resultat.html')){
+                        location.reload();
+                    }
+                    else{
+                        location = "resultat/resultat.html";//*affichage page résultat
+                    }
                 })
             }
 
