@@ -35,10 +35,35 @@
 
     <main>
         <section id="conteneurIndex" class="conteneurMain">
+            <!--*Ville favorite-->
+            <section id="favoriteCityListing" class="contenairCityTop">
+                <h2>Favoris :</h2>
+                <div class="contenu">
+
+                </div>
+            </section>
+
+            <!--*Historique de recherche-->
+            <section id="historicListing" class="contenairCityTop">
+                <h2>Historique :</h2>
+                <div class="contenu">
+                    <p>Toulouse</p>
+                    <p>Tallende</p>
+                    <p>Marseille</p>
+                    <p>Reims</p>
+                    <p>Valence</p>
+                    <p>Strasbourg</p>
+                    <p>Dijon</p>
+                </div>
+            </section>
+
             <p id="textLoc">Afin d'accéder à votre météo mondiale veuillez choisir parmi les 3 méthodes de localisation
-                proposé.<br><br>Vous pouvez soit être géolocalisé, vous avez également la possibilité de saisir des
-                coordonnées géographiques précise. Ou vous pouvez également rechercher une ville grâce à la barre de
-                recherche.</p>
+                proposé:</p>
+            <ul>
+                <li>Recherche</li>
+                <li>Géolocalisation</li>
+                <li>Coordonnées géographiques</li>
+            </ul>
 
             <!--*Bouton principal-->
             <section id="buttonTypeLocalisation">
@@ -88,6 +113,7 @@
     <!--recherche ville-->
     <script src="searchCity.js"></script>
     <script src="responsiveSearchBar.js"></script>
+    <script src="/favori/favorisHistorique.js"></script>
 </body>
 
 </html>
