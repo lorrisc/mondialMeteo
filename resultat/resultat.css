@@ -40,11 +40,11 @@ h1 {
 
 #bgForSearch {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height:100%;
+    height:100vh;
     /* background-color: #efe9f4; */
     background: linear-gradient(180deg, #2476bb, #38a2f0);
     opacity: 0%;
