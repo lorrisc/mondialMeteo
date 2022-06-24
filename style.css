@@ -116,8 +116,10 @@ h2 {
 
 
 /**INDEX -- INDEX -- INDEX*/
-#conteneurIndex h2 {
-    margin-bottom: 90px;
+#textLoc {
+    text-align: justify;
+
+    margin: 0 60px 50px 60px;
 }
 
 /*bouton principal (géolocalisation, coordonnéee précise)*/
