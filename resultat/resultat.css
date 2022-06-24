@@ -427,10 +427,10 @@ h1 {
 /**Informations bis meteo jour/heure */
 .dayInfoBis,
 .heureInfoBis {
-    /* display: none; */
     display: flex;
-    visibility: hidden;
-    height: 0px;
+    /* display: flex; */
+    /* visibility: hidden; */
+    /* height: 0px; */
     flex-direction: column;
 
     transition: all 0.5s ease 0s;
@@ -440,9 +440,13 @@ h1 {
 .dayInfoBis section,
 .heureInfoBis section {
     display: flex;
+    visibility: hidden;
     align-items: center;
     padding: 0 35px;
-    height: 60px;
+    height: 0px;
+
+    transition: all 0.5s ease 0s;
+
 }
 
 .dayInfoBis section h2,

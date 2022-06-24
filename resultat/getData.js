@@ -151,7 +151,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                 directionVent.style.transform = 'rotate(' + data.current.wind_deg + 'deg)';//Direction icon
 
                 let textDirection = document.querySelector('#directionVentText');
-                console.log(data.current.wind_deg)
                 let directionResultat = getNameDirection(data.current.wind_deg);//Renvoit la direction
                 textDirection.textContent = directionResultat;//Direction text
 
@@ -462,8 +461,6 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         j++;
                     }
                     else {
-                        console.log(heure)
-                        console.log(i)
                         titreHeure.textContent = (heureInt + i) + " h 00";
                     }
 
@@ -608,11 +605,12 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
 
                         if (statusInfo == 0) {//sous menu fermé
                             iconForOpenJour[i].classList.add("infoPrincipalOpen");
-                            // lastChildElement.style.display = "flex";
-                            lastChildElement.style.visibility = "visible";
 
-                            lastChildElement.style.height = "660px";
-                            lastChildElement.style.width = "auto";
+                            let childSectionElement = lastChildElement.childNodes;
+                            for (let i = 0; i < childSectionElement.length; i++){
+                                childSectionElement[i].style.visibility="visible";
+                                childSectionElement[i].style.height="60px";
+                            }
 
                             ouvertureFermetureButton = iconForOpenJour[i].lastChild
                             ouvertureFermetureButton.style.transform="rotate(-180deg)"
@@ -621,12 +619,12 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         }
                         else {//sous menu ouvert
                             iconForOpenJour[i].classList.remove("infoPrincipalOpen");
-                            // lastChildElement.style.display = "none";
 
-                            lastChildElement.style.height = "0px";
-
-                            lastChildElement.style.visibility = "hidden";
-
+                            let childSectionElement = lastChildElement.childNodes;
+                            for (let i = 0; i < childSectionElement.length; i++){
+                                childSectionElement[i].style.height="0px";
+                                childSectionElement[i].style.visibility="hidden";
+                            }
 
                             ouvertureFermetureButton = iconForOpenJour[i].lastChild
                             ouvertureFermetureButton.style.transform="rotate(0deg)"
@@ -647,11 +645,11 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         if (statusInfo == 0) {//sous menu fermé
                             iconForOpenHeure[i].classList.add("infoPrincipalOpen");
 
-                            // lastChildElement.style.display = "flex";
-                            lastChildElement.style.visibility = "visible";
-
-                            lastChildElement.style.height = "360px";
-                            lastChildElement.style.width = "auto";
+                            let childSectionElement = lastChildElement.childNodes;
+                            for (let i = 0; i < childSectionElement.length; i++){
+                                childSectionElement[i].style.visibility="visible";
+                                childSectionElement[i].style.height="60px";
+                            }
 
                             ouvertureFermetureButton = iconForOpenHeure[i].lastChild
                             ouvertureFermetureButton.style.transform="rotate(-180deg)"
@@ -660,10 +658,12 @@ fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=
                         }
                         else {//sous menu ouvert
                             iconForOpenHeure[i].classList.remove("infoPrincipalOpen");
-                            // lastChildElement.style.display = "none";
-                            lastChildElement.style.height = "0";
-                            lastChildElement.style.visibility = "hidden";
 
+                            let childSectionElement = lastChildElement.childNodes;
+                            for (let i = 0; i < childSectionElement.length; i++){
+                                childSectionElement[i].style.height="0px";
+                                childSectionElement[i].style.visibility="hidden";
+                            }
 
                             ouvertureFermetureButton = iconForOpenHeure[i].lastChild
                             ouvertureFermetureButton.style.transform="rotate(0deg)"
