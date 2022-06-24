@@ -34,6 +34,7 @@ iconSearch.addEventListener("click", () => {
 
                 firstBarre.style.transform = "rotate(45deg)";
                 secondBarre.style.transform = "rotate(-45deg)";
+                setTimeout(() => { iconSearch.style.display = "none"; }, 100);
 
                 firstBarre.style.top = "100px";
                 secondBarre.style.top = "100px";
