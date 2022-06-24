@@ -1,9 +1,10 @@
 /**HEADER*/
-#searchBar{
+#searchBar {
     position: absolute;
     right: 30px;
 }
-#resultatSearch{
+
+#resultatSearch {
     right: 30px;
 }
 
@@ -35,7 +36,7 @@ h1 {
 
 /**TOP INFO METEO*/
 #topMeteoTitre {
-    height: 10vh;
+    padding: 10px 0;
     width: 100%;
 
     display: flex;
@@ -471,4 +472,85 @@ h1 {
 .dayInfoBisFonce,
 .heureInfoBisFonce {
     background-color: #115592;
+}
+
+
+
+
+/**RESPONSIVE -- RESPONSIVE*/
+
+@media screen and (max-width: 1400px) {
+    header {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #contenuInfoPrincipalDonnee {
+        flex-direction: column;
+    }
+
+    #contenuInfoPrincipal,
+    #contenuPollution,
+    #contenuLune,
+    #contenuSoleil {
+        padding-bottom: 20px;
+    }
+
+    #informationsSecondairePrincipalResultat {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 626px) {
+
+    #informationsSecondairePrincipalResultat {
+        width: 81%;
+    }
+}
+
+@media screen and (max-width: 526px) {
+
+    #informationsSecondairePrincipalResultat {
+        width: 88%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+
+    #informationsSecondairePrincipalResultat {
+        width: 95%;
+        flex-direction: column;
+    }
+
+    #informationsSecondairePrincipalResultat article {
+        width: 80%;
+    }
+
+    #tempRessentie img {
+        width: 55%;
+    }
+    #humidite img {
+        width: 60%;
+    }
+    #vent img {
+        width: 30%;
+    }
+    .imgInfoSecondaire img{
+        width: 51%;
+    }
+    #valeurDesDonnes {
+        width: 85%;
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    #valeurDesDonnes p{
+        width: 100%;
+    }
+    #contenuSoleil h2, #contenuLune h2, #contenuPollution h2,#contenuInfoPrincipal h2{
+        width: 95%;
+    }
+    #typeDonneMeteo div{
+        width: 33%;
+    }
 }
