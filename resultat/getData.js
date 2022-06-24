@@ -2,6 +2,7 @@
 let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
+let informationCity=[]
 
 //*GET CITY OF USER
 fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
@@ -24,6 +25,9 @@ fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon='
                     //Région de l'utilisateur
                     let regionUser = data[0].state;
                     regionRecherche.textContent = regionUser;
+    
+                    //stock data pour favori local storage
+                    informationCity = [villeUser, latitude, longitude]
                 }
             })
         } else {
@@ -735,4 +739,5 @@ fetch('https://api.openweathermap.org/data/2.5/air_pollution?lat=' + latitude + 
         } else {
             console.log("Coordonnées incorrecte");
         }
+
     })
