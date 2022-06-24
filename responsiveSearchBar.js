@@ -13,7 +13,8 @@ iconSearch.addEventListener("click", () => {
 
         iconSearch.style.right="-20px";
 
-        closeIcon.style.visibility="visible";
+        setTimeout(() => {  closeIcon.style.visibility="visible"; }, 100);
+        
 
         firstBarre.style.transform="rotate(45deg)";
         secondBarre.style.transform="rotate(-45deg)";
@@ -31,9 +32,8 @@ closeIcon.addEventListener("click", () => {
         secondBarre.style.transform="rotate(0deg)";
         
         closeIcon.style.visibility="hidden";
+                
+        setTimeout(() => {  iconSearch.style.right="20px"; }, 200);
         
-        iconSearch.style.transition="all 0.45s ease-out"
-        
-        iconSearch.style.right="20px";
 
 })
