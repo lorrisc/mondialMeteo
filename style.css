@@ -11,12 +11,13 @@
 
 /**HEADER -- HEADER -- HEADER*/
 header {
-    height: 7vh;
+    height: 10vh;
     background-color: #115592;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 header a {
@@ -35,6 +36,55 @@ header a {
 }
 header a:hover {
     background-color: #025095;
+}
+
+
+header input{
+    width: 25%;
+    height: 40px;
+    padding: 0 5px;
+
+    border-radius: 6px;
+
+    border: none;
+}
+header input:focus{
+
+    outline: none !important;
+}
+#resultatSearch{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    top: 8.5vh;
+    border-radius: 6px;
+
+
+    background-color: white;
+    width: 25%;
+    padding:  5px 5px;
+
+    border: solid;
+    border-width: 2px;
+}
+#resultatSearch div{
+    border-bottom: solid;
+    border-width: 1px;
+
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    padding: 0 10px;
+
+    transition: background 0.3s ease-out;
+
+}
+#resultatSearch div:hover{
+    background-color: rgb(235, 235, 235);
 }
 
 

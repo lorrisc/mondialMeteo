@@ -2,6 +2,7 @@
 let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
+
 //*GET CITY OF USER
 fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&appid=950199b1cb418f0420cc6eea75b5117d')
     .then(res => {
@@ -45,26 +46,26 @@ function addDaysToDate(date, days) {
     date.setDate(date.getDate() + days)
     return date
 }
-function getNameDay(day){
-    if (day==0){
+function getNameDay(day) {
+    if (day == 0) {
         return "Dim."
     }
-    else if (day==1){
+    else if (day == 1) {
         return "Lun."
     }
-    else if (day==2){
+    else if (day == 2) {
         return "Mar."
     }
-    else if (day==3){
+    else if (day == 3) {
         return "Mer."
     }
-    else if (day==4){
+    else if (day == 4) {
         return "Jeu."
     }
-    else if (day==5){
+    else if (day == 5) {
         return "Ven."
     }
-    else if (day==6){
+    else if (day == 6) {
         return "Sam."
     }
 }
