@@ -65,21 +65,24 @@
             </section>
 
             <!--*Formulaire coordonnée précise-->
-            <section id="formulaireCoordonneGeo">
-                <section id="latitude">
-                    <label for="latitudeUser">Latitude</label>
-                    <input type="text" name="latitudeUser" id="latitudeUser">
-                </section>
+            <!-- <section id="formulaireCoordonneGeo"> -->
+                <form action="" id="formulaireCoordonneGeo">
+                    <section id="latitude">
+                        <label for="latitudeUser">Latitude</label>
+                        <input type="text" name="latitudeUser" id="latitudeUser" required autocomplete="off">
+                    </section>
 
-                <section id="longitude">
-                    <label for="longitudeUser">Longitude</label>
-                    <input type="text" name="longitudeUser" id="longitudeUser">
-                </section>
+                    <section id="longitude">
+                        <label for="longitudeUser">Longitude</label>
+                        <input type="text" name="longitudeUser" id="longitudeUser" required autocomplete="off">
+                    </section>
 
-                <a id="validationForm">
-                    <p>Rechercher</p>
-                </a>
-            </section>
+                    <a id="validationForm">
+                        <p>Rechercher</p>
+                    </a>
+                    <!-- <input type="submit" value="Rechercher" id="validationForm"> -->
+                </form>
+            <!-- </section> -->
 
             <!--Message d'erreur-->
             <p id="geolocationError" class="warningMessage">Erreur de géolocalisation</p>

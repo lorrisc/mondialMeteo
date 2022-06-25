@@ -44,7 +44,7 @@ buttonValider.addEventListener("click", () => {
     if ((latitudeUser != '') && (longitudeUser != '') && (latitudeUser >= -90 && latitudeUser <= 90) && (longitudeUser >= -180 && longitudeUser <= 180)) {
         sessionStorage.setItem('latitudeUser', latitudeUser);
         sessionStorage.setItem('longitudeUser', longitudeUser);
-
+        console.log("tets")
         location = "resultat/resultat.html";//affichage page résultat
     }
     else {

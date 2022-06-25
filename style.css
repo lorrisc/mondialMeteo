@@ -237,7 +237,7 @@ h2 {
     display: none;
 }
 
-#formulaireCoordonneGeo input {
+#latitudeUser,#longitudeUser {
     height: 35px;
     border-radius: 8px;
 
@@ -248,7 +248,7 @@ h2 {
     border-width: 2px;
 }
 
-#formulaireCoordonneGeo input:focus {
+#latitudeUser:focus,#longitudeUser:focus{
     outline: none !important;
     box-shadow: 0 0 3px #4C7CDA;
 }
@@ -268,7 +268,7 @@ h2 {
 
     align-self: flex-end;
 
-    height: 35px;
+    height: 39px;
     border-radius: 8px;
 
     border: solid;
@@ -454,6 +454,9 @@ footer p {
         text-align: justify;
         margin: 0 40px 50px 40px;
     }
+    .contenairCityTop {
+        margin: 0 40px 30px 40px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -465,6 +468,9 @@ footer p {
 
     #textLoc {
         margin: 0 20px 50px 20px;
+    }
+    .contenairCityTop {
+        margin: 0 20px 30px 20px;
     }
 }
 
@@ -481,6 +487,9 @@ footer p {
 
     #textLoc {
         margin: 0 0px 50px 0px;
+    }
+    .contenairCityTop {
+        margin: 0 0px 30px 0px;
     }
 
     header {
