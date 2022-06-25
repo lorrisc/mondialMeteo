@@ -85,6 +85,8 @@ function closeSearch() {
 closeIcon.addEventListener("click", () => {
         closeSearch();
 })
-bgForSearch.addEventListener("click", () => {
-        closeSearch();
-})
+if (window.location.href.includes('resultat.html')) {
+        bgForSearch.addEventListener("click", () => {
+                closeSearch();
+        })
+}
