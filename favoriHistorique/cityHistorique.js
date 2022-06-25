@@ -32,8 +32,5 @@ function histo() {
         //     localStorage.removeItem('villeHist');//suppression de l'actuel local storage
         //     localStorage.setItem("villeHist", informationCity);//ajout du ou des anciens favoris + ajout du nouveau favori
         // }
-        console.log("historique")
-        console.log(informationCityForFav)
-        console.log(informationCity)
     }
 }

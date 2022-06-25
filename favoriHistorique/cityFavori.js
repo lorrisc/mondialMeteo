@@ -3,17 +3,19 @@
 let addCityToFav = document.querySelector('#villeFavoriButton');//boutton add favori
 
 addCityToFav.addEventListener("click", () => {
-    console.log("infocityForfav")
-    console.log(informationCityForFav)
-    console.log(informationCity)
+
     let LSelement = localStorage.getItem("villeFav");//*recuperation local storage
 
     if (LSelement == null) {//*si pas de favori, ajoute la ville actuel
-        console.log("Local storage null")
+        //*design bouton favori
+        let iconFavori = document.querySelector('#villeFavoriButton')
+        let iconFavoriImg = document.querySelector('#villeFavoriButton img')
+        iconFavoriImg.src = '../assets/starFull.png';
+        iconFavori.style.color = "#ffcf00"
+
         localStorage.setItem("villeFav", informationCityForFav);
     }
     else {//*sinon ajoute la nouvelle si pas existante
-        console.log("Local storage non null")
 
         LSelement = LSelement.split(',');//*local storage devient un tableau
 
@@ -25,16 +27,47 @@ addCityToFav.addEventListener("click", () => {
             }
         }
         if (LSelement[compteurTabl] != informationCityForFav[0]) {//*pas de ville identique
-            console.log("infocityForfav")
-            console.log(informationCityForFav)
-            console.log("pas de ville identique")
+            //*design bouton favori
+            let iconFavori = document.querySelector('#villeFavoriButton')
+            let iconFavoriImg = document.querySelector('#villeFavoriButton img')
+            iconFavoriImg.src = '../assets/starFull.png';
+            iconFavori.style.color = "#ffcf00"
+
             informationCityForFav.push(LSelement)//le tableau recupere les donnée de la ville actuel*
-            console.log("LocalStorage Element")
-            console.log(LSelement)
-            console.log("infocityForfav")
-            console.log(informationCityForFav)
+
             localStorage.removeItem('villeFav');//suppression de l'actuel local storage
             localStorage.setItem("villeFav", informationCityForFav);//ajout du ou des anciens favoris + ajout du nouveau favori
         }
+        if (LSelement[compteurTabl] == informationCityForFav[0]) {
+            //*design bouton favori
+            let iconFavori = document.querySelector('#villeFavoriButton')
+            let iconFavoriImg = document.querySelector('#villeFavoriButton img')
+            iconFavoriImg.src = '../assets/starBorderEpais.png';
+            iconFavori.style.color = "white"
+
+            LSelement.splice(compteurTabl, 3);
+
+            localStorage.removeItem('villeFav');//suppression de l'actuel local storage
+            localStorage.setItem("villeFav", LSelement);//ajout du ou des anciens favoris + ajout du nouveau favori
+        }
     }
 })
+
+function villeDejaFavoriTest() {
+
+    //*VILLE DEJA EN FAVORI
+    let LSelementVerif = localStorage.getItem("villeFav");//*recuperation local storage
+    LSelementVerif = LSelementVerif.split(',');//*local storage devient un tableau
+
+    cityIdentiqueIconColor:
+    for (let i = 0; i < LSelementVerif.length; i++) {
+        if (LSelementVerif[i] == informationCityForFav[0]) {//*ville identique
+            let iconFavori = document.querySelector('#villeFavoriButton')
+            let iconFavoriImg = document.querySelector('#villeFavoriButton img')
+            iconFavoriImg.src = '../assets/starFull.png';
+            iconFavori.style.color = "#ffcf00"
+            break cityIdentiqueIconColor;
+        }
+    }
+
+}
