@@ -3,7 +3,8 @@ let latitude = sessionStorage.getItem('latitudeUser');
 let longitude = sessionStorage.getItem('longitudeUser');
 
 let informationCity = []
-
+let informationCityForFav = []
+let informationCityForHist = []
 
 
 //*GET CITY OF USER
@@ -29,7 +30,14 @@ fetch('https://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon='
                     regionRecherche.textContent = regionUser;
 
                     //stock data pour favori local storage
+                    informationCity = []
                     informationCity = [villeUser, latitude, longitude]
+                    informationCityForFav = [villeUser, latitude, longitude]
+                    informationCityForHist = [villeUser, latitude, longitude]
+                    console.log("get data")
+                    console.log(informationCityForFav)
+                    console.log(informationCityForHist)
+                    console.log(informationCity)
                     histo()
                 }
             })

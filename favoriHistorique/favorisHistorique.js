@@ -2,7 +2,10 @@
 let userFav = localStorage.getItem("villeFav");//*recuperation local storage
 
 if (userFav == null) {
-    console.log("Pas de ville favorites enregistrés")
+    console.log("Pas de ville favorites enregistrés");
+    let container = document.querySelector('#favoriteCityListing');
+    container.style.display="none";
+
 }
 else {//*création des étiquettes fav
     userFav = userFav.split(',');//local storage devient un tableau
@@ -22,6 +25,9 @@ let userHist = localStorage.getItem("villeHist");//*recuperation local storage
 
 if (userHist == null) {
     console.log("Aucun historique")
+    let container = document.querySelector('#historicListing')
+    container.style.display="none";
+
 }
 else {//*création des étiquettes hist
     userHist = userHist.split(',');//local storage devient un tableau
