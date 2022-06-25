@@ -31,7 +31,7 @@ for (let i = 0; i < etiquetteHistorique.length; i++) {
     etiquetteHistorique[i].addEventListener("click", () => {
 
         //*récupération session storage
-        let userHist = localStorage.getItem("villeFav");
+        let userHist = localStorage.getItem("villeHist");
         userHist = userHist.split(',');
 
         let compteurTabl = 0;
